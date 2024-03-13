@@ -1,5 +1,6 @@
 const String imagePath = 'assets/images';
-const String jsonPath = 'assets/json';
+const String jsonPath = 'assets/jsons';
+const String rivePath = 'assets/rive';
 
 class ImageAssets {
   //misc
@@ -14,7 +15,7 @@ class ImageAssets {
   static const String favOutlined_1 = '$imagePath/misc/fav_1_outlined.svg';
   static const String fav_2 = '$imagePath/misc/fav_2.svg';
   static const String favOutlined_2 = '$imagePath/misc/fav_2_outlined.svg';
-  static const String magikarp = '$imagePath/misc/magikarp.svg';
+  static const String magikarp = '$imagePath/misc/magikarp.png';
   static const String passHide = '$imagePath/misc/pass_hide.svg';
   static const String passShow = '$imagePath/misc/pass_show.svg';
   static const String pokedex = '$imagePath/misc/pokedex.svg';
@@ -32,24 +33,26 @@ class ImageAssets {
   static const String navbarProfileOutlined =
       '$imagePath/navbar/profile_icon_outlined.svg';
   //trainers
-  static const String trainer1 = '$imagePath/trainers/trainer_1.svg';
-  static const String trainer2 = '$imagePath/trainers/trainer_2.svg';
-  static const String trainer3 = '$imagePath/trainers/trainer_3.svg';
-  static const String trainer4 = '$imagePath/trainers/trainer_4.svg';
-  static const String trainer5 = '$imagePath/trainers/trainer_5.svg';
-  static const String trainer6 = '$imagePath/trainers/trainer_6.svg';
-  static const String trainer7 = '$imagePath/trainers/trainer_7.svg';
-  static const String trainer8 = '$imagePath/trainers/trainer_8.svg';
-  static const String trainer9 = '$imagePath/trainers/trainer_9.svg';
-  static const String trainer10 = '$imagePath/trainers/trainer_10.svg';
-  static const String trainer11 = '$imagePath/trainers/trainer_11.svg';
-  static const String trainer12 = '$imagePath/trainers/trainer_12.svg';
+  static const String trainer1 = '$imagePath/trainers/trainer_1.png';
+  static const String trainer2 = '$imagePath/trainers/trainer_2.png';
+  static const String trainer3 = '$imagePath/trainers/trainer_3.png';
+  static const String trainer4 = '$imagePath/trainers/trainer_4.png';
+  static const String trainer5 = '$imagePath/trainers/trainer_5.png';
+  static const String trainer6 = '$imagePath/trainers/trainer_6.png';
+  static const String trainer7 = '$imagePath/trainers/trainer_7.png';
+  static const String trainer8 = '$imagePath/trainers/trainer_8.png';
+  static const String trainer9 = '$imagePath/trainers/trainer_9.png';
+  static const String trainer10 = '$imagePath/trainers/trainer_10.png';
+  static const String trainer11 = '$imagePath/trainers/trainer_11.png';
+  static const String trainer12 = '$imagePath/trainers/trainer_12.png';
   static const String trainerDouble1 =
-      '$imagePath/trainers/trainer_double_1.svg';
+      '$imagePath/trainers/trainer_double_1.png';
   static const String trainerDouble2 =
-      '$imagePath/trainers/trainer_double_2.svg';
+      '$imagePath/trainers/trainer_double_2.png';
   static const String trainerDouble3 =
       '$imagePath/trainers/trainer_double_3.png';
+  static const String trainerDouble4 =
+      '$imagePath/trainers/trainer_double_4.png';
   //types
   static const String typeBug = '$imagePath/types/type_bug.svg';
   static const String typeDark = '$imagePath/types/type_dark.svg';
@@ -74,4 +77,8 @@ class ImageAssets {
 class JsonAssets {
   //json assets
   static const String loading = '$jsonPath/pokemon_loading.json';
+}
+class RiveAssets {
+  //json assets
+  static const String loading = '$rivePath/pokemon_loading.riv';
 }

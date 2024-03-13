@@ -24,10 +24,18 @@ ThemeData getApplicationTheme() {
       color: ColorManager.white,
       elevation: AppSize.s0,
       shadowColor: ColorManager.lightPrimary,
-      titleTextStyle: getRegularStyle(
-        color: ColorManager.white,
-        fontSize: FontSizeManager.s16,
+      titleTextStyle: getSemiBoldStyle(
+        color: ColorManager.black,
+        fontSize: FontSizeManager.s18,
       ),
+    ),
+//bottom navbar theme
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      selectedLabelStyle: getMediumStyle(
+        color: ColorManager.primary,
+        fontSize: FontSizeManager.s12,
+      ),
+      selectedItemColor: ColorManager.primary,
     ),
 //button theme
     buttonTheme: ButtonThemeData(
@@ -51,10 +59,14 @@ ThemeData getApplicationTheme() {
     outlinedButtonTheme: OutlinedButtonThemeData(
       style: ElevatedButton.styleFrom(
         textStyle: getRegularStyle(
-          color: ColorManager.white,
+          color: ColorManager.black,
           fontSize: FontSizeManager.s18,
         ),
-        backgroundColor: ColorManager.primary,
+        foregroundColor: ColorManager.black,
+        side: BorderSide(
+          color: ColorManager.outlineButtonBorderColor,
+          width: 1.5,
+        ),
         shape: StadiumBorder(),
       ),
     ),
@@ -78,13 +90,37 @@ ThemeData getApplicationTheme() {
         color: ColorManager.black,
         fontSize: FontSizeManager.s14,
       ),
+      bodyLarge: getSemiBoldStyle(
+        color: ColorManager.black,
+        fontSize: FontSizeManager.s26,
+      ),
+      bodyMedium: getRegularStyle(
+        color: ColorManager.black,
+        fontSize: FontSizeManager.s26,
+      ),
+      bodySmall: getMediumStyle(
+        color: ColorManager.black,
+        fontSize: FontSizeManager.s14,
+      ),
+      labelLarge: getSemiBoldStyle(
+        color: ColorManager.black,
+        fontSize: FontSizeManager.s20,
+      ),
+      labelMedium: getRegularStyle(
+        color: ColorManager.black,
+        fontSize: FontSizeManager.s16,
+      ),
+      labelSmall: getRegularStyle(
+        color: ColorManager.black,
+        fontSize: FontSizeManager.s12,
+      ),
     ),
 //input decoration theme (text form field)
     inputDecorationTheme: InputDecorationTheme(
-      contentPadding: EdgeInsets.all(AppPadding.p8),
+      contentPadding: const EdgeInsets.only(left: AppPadding.p16),
       hintStyle: getRegularStyle(
-        color: ColorManager.grey,
-        fontSize: FontSizeManager.s14,
+        color: ColorManager.textfieldHintColor,
+        fontSize: FontSizeManager.s16,
       ),
       labelStyle: getMediumStyle(
         color: ColorManager.grey,
@@ -98,28 +134,28 @@ ThemeData getApplicationTheme() {
           color: ColorManager.grey,
           width: AppSize.s1_5,
         ),
-        borderRadius: BorderRadius.all(Radius.circular(AppSize.s8)),
+        borderRadius: const BorderRadius.all(Radius.circular(AppSize.s8)),
       ),
       focusedBorder: OutlineInputBorder(
         borderSide: BorderSide(
           color: ColorManager.primary,
           width: AppSize.s1_5,
         ),
-        borderRadius: BorderRadius.all(Radius.circular(AppSize.s8)),
+        borderRadius: const BorderRadius.all(Radius.circular(AppSize.s8)),
       ),
       errorBorder: OutlineInputBorder(
         borderSide: BorderSide(
           color: ColorManager.textErrorColor,
           width: AppSize.s1_5,
         ),
-        borderRadius: BorderRadius.all(Radius.circular(AppSize.s8)),
+        borderRadius: const BorderRadius.all(Radius.circular(AppSize.s8)),
       ),
       focusedErrorBorder: OutlineInputBorder(
         borderSide: BorderSide(
           color: ColorManager.primary,
           width: AppSize.s1_5,
         ),
-        borderRadius: BorderRadius.all(Radius.circular(AppSize.s8)),
+        borderRadius: const BorderRadius.all(Radius.circular(AppSize.s8)),
       ),
     ),
   );

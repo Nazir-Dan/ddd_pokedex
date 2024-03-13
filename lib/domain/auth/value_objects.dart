@@ -29,3 +29,13 @@ class Password extends ValueObject {
 
   const Password._({required this.value});
 }
+
+class UserName extends ValueObject {
+  @override
+  final Either<ValueFailure, String> value;
+  factory UserName(String input) {
+    assert(input != null);
+    return UserName._(value: validateStringNotEmpty(input));
+  }
+  const UserName._({required this.value});
+}

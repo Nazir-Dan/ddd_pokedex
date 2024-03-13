@@ -3,8 +3,8 @@ import 'package:ddd_pokedex/presentation/core/theme_extentions.dart';
 import 'package:ddd_pokedex/presentation/resources/assets_manager.dart';
 import 'package:ddd_pokedex/presentation/resources/strings_manager.dart';
 import 'package:ddd_pokedex/presentation/resources/values_manager.dart';
+import 'package:ddd_pokedex/presentation/routes/app_router.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 @RoutePage()
 class AuthPage extends StatelessWidget {
@@ -39,17 +39,17 @@ class AuthPage extends StatelessWidget {
               width: double.infinity,
               height: AppSize.s60,
               child: ElevatedButton(
-                onPressed: () {},
-                child: Text(
-                  AppStrings.createAcc,
-                ),
+                onPressed: () {
+                  context.router.push(const SignUpRoute());
+                },
+                child: const Text(AppStrings.createAcc),
               ),
             ),
             TextButton(
-              onPressed: () {},
-              child: Text(
-                AppStrings.alreadyHaveAcc,
-              ),
+              onPressed: () {
+                context.router.push(const LoginRoute());
+              },
+              child: const Text(AppStrings.alreadyHaveAcc),
             )
           ],
         ),

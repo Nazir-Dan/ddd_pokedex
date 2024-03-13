@@ -15,8 +15,9 @@ class ColorManager {
   static Color textErrorColor = const Color(0xffcd3131);
   //buttons
   static Color buttonTextColor = const Color(0xffffffff);
-  static Color disabledButtonColor = const Color(0xffffffff);
+  static Color disabledButtonColor = const Color(0xff999999);
   static Color disabledButtonTextColor = const Color(0xffe6e6e6);
+  static Color outlineButtonBorderColor = const Color(0xffDBDCDD);
   //text_field
   static Color textfieldHintColor = const Color(0xff999999);
   //cards

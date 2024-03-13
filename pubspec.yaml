@@ -53,6 +53,8 @@ dependencies:
   flutter_slidable: ^3.0.1
   lottie: ^3.1.0
   flutter_svg: ^2.0.10+1
+  cloud_firestore: ^4.15.8
+  dio: ^5.4.1
 
 dev_dependencies:
   flutter_test:
@@ -88,6 +90,7 @@ flutter:
     - assets/images/types/
     - assets/images/navbar/
     - assets/jsons/
+    - assets/rive/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

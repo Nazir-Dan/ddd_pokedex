@@ -14,13 +14,16 @@ class SplashPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocListener<AuthBloc, AuthState>(
-      listener: (context, state) {
+      listener: (context, state) async {
+        await Future.delayed(const Duration(seconds: 2));
         state.map(
           initialState: (_) {},
           authenticated: (_) {
-            //context.router.replace(const NotesOverviewRoute());
+            context.router.replace(MainRoute());
           },
-          unAuthenticated: (_) => context.router.replace(const AuthRoute()),
+          unAuthenticated: (_) {
+            context.router.replace(OnboardingRoute());
+          },
         );
       },
       child: _PageWidget(),
