@@ -67,4 +67,16 @@ class AppStrings {
   static const shortPass = 'Short Password';
   static const invalidEmail = 'Invalid Email';
   static const emptyName = 'Name can not be empty';
+  //exceptions
+  static String success = '';
+  static String noContent = '';
+  static String badRequestError = '';
+  static String unauthorizedError = '';
+  static String forbiddenError = '';
+  static String notFoundError = '';
+  static String internalServerError = '';
+  static String timeoutError = '';
+  static String cacheError = '';
+  static String noInternetError = '';
+  static String defaultError = '';
 }

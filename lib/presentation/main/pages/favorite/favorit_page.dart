@@ -3,7 +3,6 @@ import 'package:ddd_pokedex/presentation/resources/assets_manager.dart';
 import 'package:ddd_pokedex/presentation/resources/strings_manager.dart';
 import 'package:ddd_pokedex/presentation/resources/values_manager.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class FavoritePage extends StatelessWidget {
   const FavoritePage({super.key});

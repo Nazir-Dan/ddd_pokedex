@@ -8,20 +8,28 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:cloud_firestore/cloud_firestore.dart' as _i4;
-import 'package:firebase_auth/firebase_auth.dart' as _i3;
+import 'package:cloud_firestore/cloud_firestore.dart' as _i6;
+import 'package:dio/dio.dart' as _i3;
+import 'package:firebase_auth/firebase_auth.dart' as _i5;
 import 'package:get_it/get_it.dart' as _i1;
-import 'package:google_sign_in/google_sign_in.dart' as _i6;
+import 'package:google_sign_in/google_sign_in.dart' as _i8;
 import 'package:injectable/injectable.dart' as _i2;
+import 'package:internet_connection_checker/internet_connection_checker.dart'
+    as _i13;
 
-import 'app/auth/auth_bloc_bloc.dart' as _i12;
-import 'app/auth/sign_in_form/sign_in_form_bloc.dart' as _i11;
-import 'domain/auth/i_auth_facade.dart' as _i7;
-import 'domain/profile/i_profile_repository.dart' as _i9;
-import 'infrastructure/auth/firebase_auth_facade.dart' as _i8;
-import 'infrastructure/auth/firebase_user_mapper.dart' as _i5;
-import 'infrastructure/core/firebase_injectable_module.dart' as _i13;
-import 'infrastructure/profile/profile_repository.dart' as _i10;
+import 'app/auth/auth_bloc_bloc.dart' as _i17;
+import 'app/auth/sign_in_form/sign_in_form_bloc.dart' as _i15;
+import 'domain/auth/i_auth_facade.dart' as _i9;
+import 'domain/pokeapi/i_pokeapi_repository.dart' as _i18;
+import 'domain/profile/i_profile_repository.dart' as _i11;
+import 'infrastructure/auth/firebase_auth_facade.dart' as _i10;
+import 'infrastructure/auth/firebase_user_mapper.dart' as _i7;
+import 'infrastructure/core/dio_factory.dart' as _i4;
+import 'infrastructure/core/injectable_module.dart' as _i20;
+import 'infrastructure/core/netowrk_info.dart' as _i14;
+import 'infrastructure/pokeapi/pokeapi_repository.dart' as _i19;
+import 'infrastructure/pokeapi/pokeapi_service_client.dart' as _i16;
+import 'infrastructure/profile/profile_repository.dart' as _i12;
 
 extension GetItInjectableX on _i1.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -34,28 +42,38 @@ extension GetItInjectableX on _i1.GetIt {
       environment,
       environmentFilter,
     );
-    final firebaseInjectableModule = _$FirebaseInjectableModule();
-    gh.lazySingleton<_i3.FirebaseAuth>(
-        () => firebaseInjectableModule.firebaseAuth);
-    gh.lazySingleton<_i4.FirebaseFirestore>(
-        () => firebaseInjectableModule.firebaseFirestore);
-    gh.lazySingleton<_i5.FirebaseUserMapper>(() => _i5.FirebaseUserMapper());
-    gh.lazySingleton<_i6.GoogleSignIn>(
-        () => firebaseInjectableModule.googleSignIn);
-    gh.lazySingleton<_i7.IAuthFacade>(() => _i8.FirebaseAuthFacade(
-          gh<_i3.FirebaseAuth>(),
-          gh<_i6.GoogleSignIn>(),
-          gh<_i5.FirebaseUserMapper>(),
+    final injectableModules = _$InjectableModules();
+    gh.lazySingleton<_i3.Dio>(() => injectableModules.dio);
+    gh.factory<_i4.DioFactory>(() => _i4.DioFactory());
+    gh.lazySingleton<_i5.FirebaseAuth>(() => injectableModules.firebaseAuth);
+    gh.lazySingleton<_i6.FirebaseFirestore>(
+        () => injectableModules.firebaseFirestore);
+    gh.lazySingleton<_i7.FirebaseUserMapper>(() => _i7.FirebaseUserMapper());
+    gh.lazySingleton<_i8.GoogleSignIn>(() => injectableModules.googleSignIn);
+    gh.lazySingleton<_i9.IAuthFacade>(() => _i10.FirebaseAuthFacade(
+          gh<_i5.FirebaseAuth>(),
+          gh<_i8.GoogleSignIn>(),
+          gh<_i7.FirebaseUserMapper>(),
         ));
-    gh.lazySingleton<_i9.IProfileRepository>(
-        () => _i10.ProfileRepository(gh<_i4.FirebaseFirestore>()));
-    gh.factory<_i11.SignInFormBloc>(() => _i11.SignInFormBloc(
-          gh<_i7.IAuthFacade>(),
-          gh<_i9.IProfileRepository>(),
+    gh.lazySingleton<_i11.IProfileRepository>(
+        () => _i12.ProfileRepository(gh<_i6.FirebaseFirestore>()));
+    gh.lazySingleton<_i13.InternetConnectionChecker>(
+        () => injectableModules.internetConnectionChecker);
+    gh.lazySingleton<_i14.NetworkInfo>(
+        () => _i14.NetworkInfoImpl(gh<_i13.InternetConnectionChecker>()));
+    gh.factory<_i15.SignInFormBloc>(() => _i15.SignInFormBloc(
+          gh<_i9.IAuthFacade>(),
+          gh<_i11.IProfileRepository>(),
         ));
-    gh.factory<_i12.AuthBloc>(() => _i12.AuthBloc(gh<_i7.IAuthFacade>()));
+    gh.lazySingleton<_i16.AppServiceClient>(
+        () => _i16.AppServiceClient(gh<_i3.Dio>()));
+    gh.factory<_i17.AuthBloc>(() => _i17.AuthBloc(gh<_i9.IAuthFacade>()));
+    gh.lazySingleton<_i18.IPokeapiRepository>(() => _i19.PokeApiRepository(
+          gh<_i16.AppServiceClient>(),
+          gh<_i14.NetworkInfo>(),
+        ));
     return this;
   }
 }
 
-class _$FirebaseInjectableModule extends _i13.FirebaseInjectableModule {}
+class _$InjectableModules extends _i20.InjectableModules {}

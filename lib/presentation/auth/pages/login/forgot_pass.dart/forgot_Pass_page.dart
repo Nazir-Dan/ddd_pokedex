@@ -1,12 +1,8 @@
-import 'dart:async';
-
 import 'package:auto_route/auto_route.dart';
 import 'package:ddd_pokedex/app/auth/sign_in_form/sign_in_form_bloc.dart';
 import 'package:ddd_pokedex/injection.dart';
 import 'package:ddd_pokedex/presentation/auth/pages/login/forgot_pass.dart/code_page.dart';
 import 'package:ddd_pokedex/presentation/core/theme_extentions.dart';
-import 'package:ddd_pokedex/presentation/resources/color_manager.dart';
-import 'package:ddd_pokedex/presentation/resources/font_manager.dart';
 import 'package:ddd_pokedex/presentation/resources/strings_manager.dart';
 import 'package:ddd_pokedex/presentation/resources/values_manager.dart';
 import 'package:flutter/cupertino.dart';

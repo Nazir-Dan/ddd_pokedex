@@ -48,3 +48,11 @@ Either<ValueFailure<String>, String> validateSingleLine(String input) {
     return right(input);
   }
 }
+
+Either<ValueFailure<String>, int> validatePokemonId(int input) {
+  if (input <= 0) {
+    return left(ValueFailure.multiline(failedValue: input.toString()));
+  } else {
+    return right(input);
+  }
+}

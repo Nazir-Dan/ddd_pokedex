@@ -6,8 +6,7 @@ part of 'profile_dtos.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ProfileDtoImpl _$$ProfileDtoImplFromJson(Map<String, dynamic> json) =>
-    _$ProfileDtoImpl(
+_$ProfileDtoImpl _$$ProfileDtoImplFromJson(Map json) => _$ProfileDtoImpl(
       name: json['name'] as String,
       favorites:
           (json['favorites'] as List<dynamic>).map((e) => e as String).toList(),

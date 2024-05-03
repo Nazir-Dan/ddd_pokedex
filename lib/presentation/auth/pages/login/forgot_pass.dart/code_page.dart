@@ -14,6 +14,7 @@ class ForgotPasswordCodePage extends HookWidget {
   final VoidCallback onPressed;
 
   ForgotPasswordCodePage({
+    super.key,
     required this.onPressed,
   });
   bool isDone = false;
