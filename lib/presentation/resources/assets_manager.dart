@@ -72,6 +72,25 @@ class ImageAssets {
   static const String typeRock = '$imagePath/types/type_rock.svg';
   static const String typeSteel = '$imagePath/types/type_steel.svg';
   static const String typeWater = '$imagePath/types/type_water.svg';
+  
+  static const String typeBugOp = '$imagePath/types/type_opacity_bug.svg';
+  static const String typeDarkOp = '$imagePath/types/type_opacity_dark.svg';
+  static const String typeDragonOp = '$imagePath/types/type_opacity_dragon.svg';
+  static const String typeElectricOp = '$imagePath/types/type_opacity_electric.svg';
+  static const String typeFairyOp = '$imagePath/types/type_opacity_fairy.svg';
+  static const String typeFightingOp = '$imagePath/types/type_opacity_fighting.svg';
+  static const String typeFireOp = '$imagePath/types/type_opacity_fire.svg';
+  static const String typeFlyingOp = '$imagePath/types/type_opacity_flying.svg';
+  static const String typeGhostOp = '$imagePath/types/type_opacity_ghost.svg';
+  static const String typeGrassOp = '$imagePath/types/type_opacity_grass.svg';
+  static const String typeGroundOp = '$imagePath/types/type_opacity_ground.svg';
+  static const String typeIceOp = '$imagePath/types/type_opacity_ice.svg';
+  static const String typeNormalOp = '$imagePath/types/type_opacity_normal.svg';
+  static const String typePoisonOp = '$imagePath/types/type_opacity_poison.svg';
+  static const String typePsychicOp = '$imagePath/types/type_opacity_psychic.svg';
+  static const String typeRockOp = '$imagePath/types/type_opacity_rock.svg';
+  static const String typeSteelOp = '$imagePath/types/type_opacity_steel.svg';
+  static const String typeWaterOp = '$imagePath/types/type_opacity_water.svg';
 }
 
 class JsonAssets {

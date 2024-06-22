@@ -32,7 +32,7 @@ class AppStrings {
   static const yourNameTxt = 'What is your name?';
   static const nameAlertTxt = 'This will be your username on the app.';
   static const nameHintTxt = 'Name';
-  static const enterTxt = 'To enter';
+  static const enterTxt = 'Enter';
   static const loginTitle = 'Good to see you here again!';
   static const credentialsTitle = 'Welcome back!';
   static const credentialsSubtitle = 'Good to see you here again!';
@@ -50,11 +50,50 @@ class AppStrings {
   static const successSubtitle2 =
       'Welcome, coach! We are excited to follow your journey.';
 
-  //main
+  //main/pokedex
   static const pokedex = 'Pokédex';
+  static const noContentTitle = 'You didn\'t download the data :(';
+  static const noContentSubtitle =
+      'Click on the button below to start the download.';
+  static const filterTitleType = 'Select a type';
+  static const filterTitleOrder = 'Select an order';
+  //main/fav
+  static const faves = 'Favorites';
   static const noFavesTitle = 'You didn\'t favorite any Pokémon :(';
   static const noFavesSubtitle =
       'Click on the heart icon of your favorite Pokémon and they will appear here.';
+  static const filterAscending = 'Ascending';
+  static const filterDescending = 'Descending';
+  static const filterAtoZ = 'A-Z';
+  static const filterZtoA = 'Z-A';
+
+  //main/regions
+  static const regions = 'Regions';
+  //main/profile
+  static const profile = 'Profile';
+  static const logoutDialogTitle = 'Are you sure you want to quit?';
+  static const dialogYesOption = 'Yes, exit';
+  static const dialogNoOption = 'Yes, exit';
+
+  //pokemon_Types
+  static const typeAll = 'All Types';
+  static const typeFire = 'Fire';
+  static const typeWater = 'Water';
+  static const typeFlying = 'Flying';
+  static const typeFighting = 'Fighting';
+  static const typeElectric = 'Electric';
+  static const typeGround = 'Ground';
+  static const typeRock = 'Rock';
+  static const typeIce = 'Ice';
+  static const typeBug = 'Bug';
+  static const typeGhost = 'Ghost';
+  static const typeSteel = 'Steel';
+  static const typeDragon = 'Dragon';
+  static const typeDark = 'Dark';
+  static const typeFairy = 'Fairy';
+  static const typeGrass = 'Grass';
+  static const typePsychic = 'Psychic';
+  static const typePoison = 'Poison';
 
   //failures
   static const canceled = 'Cancelled';
@@ -68,15 +107,15 @@ class AppStrings {
   static const invalidEmail = 'Invalid Email';
   static const emptyName = 'Name can not be empty';
   //exceptions
-  static String success = '';
-  static String noContent = '';
-  static String badRequestError = '';
-  static String unauthorizedError = '';
-  static String forbiddenError = '';
-  static String notFoundError = '';
-  static String internalServerError = '';
-  static String timeoutError = '';
-  static String cacheError = '';
-  static String noInternetError = '';
-  static String defaultError = '';
+  static String success = 'Success';
+  static String noContent = 'No Content Found';
+  static String badRequestError = 'Bad Request';
+  static String unauthorizedError = 'Unauthorized';
+  static String forbiddenError = 'Forbidden';
+  static String notFoundError = 'Not Found';
+  static String internalServerError = 'Internal Server Error';
+  static String timeoutError = 'Timeout';
+  static String cacheError = 'Cache Error';
+  static String noInternetError = 'No Internet Connection';
+  static String defaultError = 'Unknown Error';
 }

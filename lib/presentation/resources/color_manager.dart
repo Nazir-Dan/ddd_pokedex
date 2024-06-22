@@ -34,7 +34,7 @@ class ColorManager {
   static Color typeFightingColor = const Color(0xffCE416B);
   static Color typeNormalColor = const Color(0xff919AA2);
   static Color typeDarkColor = const Color(0xff5A5465);
-  static Color typeMetalColor = const Color(0xff5A8EA2);
+  static Color typeSteelColor = const Color(0xff5A8EA2);
   static Color typeRockColor = const Color(0xffC5B78C);
   static Color typePsychicColor = const Color(0xffFA7179);
   static Color typeGroundColor = const Color(0xffD97845);

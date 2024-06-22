@@ -1,4 +1,4 @@
-import 'package:ddd_pokedex/app/core/constants.dart';
+import 'package:ddd_pokedex/app/core/app_constants.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';

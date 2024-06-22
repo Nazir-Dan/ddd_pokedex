@@ -6,3 +6,24 @@ class Constants {
   static const int pageLength = 20;
   static const int API_TIME_OUT = 20; //In seconds
 }
+
+enum PokemonTypes {
+  Normal,
+  Fire,
+  Water,
+  Grass,
+  Flying,
+  Fighting,
+  Poison,
+  Electric,
+  Ground,
+  Rock,
+  Psychic,
+  Ice,
+  Bug,
+  Ghost,
+  Steel,
+  Dragon,
+  Dark,
+  Fairy,
+}
