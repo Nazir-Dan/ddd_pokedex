@@ -3,6 +3,7 @@ import 'package:ddd_pokedex/presentation/auth/pages/auth_page.dart';
 import 'package:ddd_pokedex/presentation/auth/pages/login/forgot_pass.dart/forgot_Pass_page.dart';
 import 'package:ddd_pokedex/presentation/auth/pages/login/login.dart';
 import 'package:ddd_pokedex/presentation/auth/pages/sign_up/signup.dart';
+import 'package:ddd_pokedex/presentation/main/details_page.dart';
 import 'package:ddd_pokedex/presentation/main/main_page.dart';
 import 'package:ddd_pokedex/presentation/onboarding/onboarding_page.dart';
 import 'package:ddd_pokedex/presentation/splash/splash_screen.dart';
@@ -34,6 +35,9 @@ class AppRouter extends _$AppRouter {
         ),
         AutoRoute(
           page: MainRoute.page,
+        ),
+        AutoRoute(
+          page: DetailsRoute.page,
         ),
       ];
 }

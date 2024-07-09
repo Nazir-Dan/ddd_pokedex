@@ -8,6 +8,8 @@ class ColorManager {
   static Color white = const Color(0xffffffff);
   static Color black = const Color(0xff000000);
   static Color grey = const Color(0xff737477);
+  static Color male = const Color(0xff2551C3);
+  static Color female = const Color(0xffFF7596);
   //text
   static Color textTitleColor = const Color(0xff000000);
   static Color textTitleLightColor = const Color(0xff4d4d4d);

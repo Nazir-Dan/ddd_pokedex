@@ -17,13 +17,15 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$Pokemon {
   NonEmptyString get pokemonId => throw _privateConstructorUsedError;
+  NonEmptyString get specieName => throw _privateConstructorUsedError;
+  NonEmptyString get specieUrl => throw _privateConstructorUsedError;
   NonEmptyString get name => throw _privateConstructorUsedError;
-  NonEmptyString get imageUrl => throw _privateConstructorUsedError;
+  PokemonSprites get sprites => throw _privateConstructorUsedError;
   NonEmptyString get height => throw _privateConstructorUsedError;
   NonEmptyString get weight => throw _privateConstructorUsedError;
   NonEmptyString get baseExperience => throw _privateConstructorUsedError;
   List<PokemonAbility> get abilities => throw _privateConstructorUsedError;
-  List<PokemonType> get types => throw _privateConstructorUsedError;
+  List<GenericType> get types => throw _privateConstructorUsedError;
   List<PokemonMove> get moves => throw _privateConstructorUsedError;
   List<PokemonStat> get stats => throw _privateConstructorUsedError;
 
@@ -38,15 +40,19 @@ abstract class $PokemonCopyWith<$Res> {
   @useResult
   $Res call(
       {NonEmptyString pokemonId,
+      NonEmptyString specieName,
+      NonEmptyString specieUrl,
       NonEmptyString name,
-      NonEmptyString imageUrl,
+      PokemonSprites sprites,
       NonEmptyString height,
       NonEmptyString weight,
       NonEmptyString baseExperience,
       List<PokemonAbility> abilities,
-      List<PokemonType> types,
+      List<GenericType> types,
       List<PokemonMove> moves,
       List<PokemonStat> stats});
+
+  $PokemonSpritesCopyWith<$Res> get sprites;
 }
 
 /// @nodoc
@@ -63,8 +69,10 @@ class _$PokemonCopyWithImpl<$Res, $Val extends Pokemon>
   @override
   $Res call({
     Object? pokemonId = null,
+    Object? specieName = null,
+    Object? specieUrl = null,
     Object? name = null,
-    Object? imageUrl = null,
+    Object? sprites = null,
     Object? height = null,
     Object? weight = null,
     Object? baseExperience = null,
@@ -78,14 +86,22 @@ class _$PokemonCopyWithImpl<$Res, $Val extends Pokemon>
           ? _value.pokemonId
           : pokemonId // ignore: cast_nullable_to_non_nullable
               as NonEmptyString,
+      specieName: null == specieName
+          ? _value.specieName
+          : specieName // ignore: cast_nullable_to_non_nullable
+              as NonEmptyString,
+      specieUrl: null == specieUrl
+          ? _value.specieUrl
+          : specieUrl // ignore: cast_nullable_to_non_nullable
+              as NonEmptyString,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as NonEmptyString,
-      imageUrl: null == imageUrl
-          ? _value.imageUrl
-          : imageUrl // ignore: cast_nullable_to_non_nullable
-              as NonEmptyString,
+      sprites: null == sprites
+          ? _value.sprites
+          : sprites // ignore: cast_nullable_to_non_nullable
+              as PokemonSprites,
       height: null == height
           ? _value.height
           : height // ignore: cast_nullable_to_non_nullable
@@ -105,7 +121,7 @@ class _$PokemonCopyWithImpl<$Res, $Val extends Pokemon>
       types: null == types
           ? _value.types
           : types // ignore: cast_nullable_to_non_nullable
-              as List<PokemonType>,
+              as List<GenericType>,
       moves: null == moves
           ? _value.moves
           : moves // ignore: cast_nullable_to_non_nullable
@@ -115,6 +131,14 @@ class _$PokemonCopyWithImpl<$Res, $Val extends Pokemon>
           : stats // ignore: cast_nullable_to_non_nullable
               as List<PokemonStat>,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $PokemonSpritesCopyWith<$Res> get sprites {
+    return $PokemonSpritesCopyWith<$Res>(_value.sprites, (value) {
+      return _then(_value.copyWith(sprites: value) as $Val);
+    });
   }
 }
 
@@ -127,15 +151,20 @@ abstract class _$$PokemonImplCopyWith<$Res> implements $PokemonCopyWith<$Res> {
   @useResult
   $Res call(
       {NonEmptyString pokemonId,
+      NonEmptyString specieName,
+      NonEmptyString specieUrl,
       NonEmptyString name,
-      NonEmptyString imageUrl,
+      PokemonSprites sprites,
       NonEmptyString height,
       NonEmptyString weight,
       NonEmptyString baseExperience,
       List<PokemonAbility> abilities,
-      List<PokemonType> types,
+      List<GenericType> types,
       List<PokemonMove> moves,
       List<PokemonStat> stats});
+
+  @override
+  $PokemonSpritesCopyWith<$Res> get sprites;
 }
 
 /// @nodoc
@@ -150,8 +179,10 @@ class __$$PokemonImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? pokemonId = null,
+    Object? specieName = null,
+    Object? specieUrl = null,
     Object? name = null,
-    Object? imageUrl = null,
+    Object? sprites = null,
     Object? height = null,
     Object? weight = null,
     Object? baseExperience = null,
@@ -165,14 +196,22 @@ class __$$PokemonImplCopyWithImpl<$Res>
           ? _value.pokemonId
           : pokemonId // ignore: cast_nullable_to_non_nullable
               as NonEmptyString,
+      specieName: null == specieName
+          ? _value.specieName
+          : specieName // ignore: cast_nullable_to_non_nullable
+              as NonEmptyString,
+      specieUrl: null == specieUrl
+          ? _value.specieUrl
+          : specieUrl // ignore: cast_nullable_to_non_nullable
+              as NonEmptyString,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as NonEmptyString,
-      imageUrl: null == imageUrl
-          ? _value.imageUrl
-          : imageUrl // ignore: cast_nullable_to_non_nullable
-              as NonEmptyString,
+      sprites: null == sprites
+          ? _value.sprites
+          : sprites // ignore: cast_nullable_to_non_nullable
+              as PokemonSprites,
       height: null == height
           ? _value.height
           : height // ignore: cast_nullable_to_non_nullable
@@ -192,7 +231,7 @@ class __$$PokemonImplCopyWithImpl<$Res>
       types: null == types
           ? _value._types
           : types // ignore: cast_nullable_to_non_nullable
-              as List<PokemonType>,
+              as List<GenericType>,
       moves: null == moves
           ? _value._moves
           : moves // ignore: cast_nullable_to_non_nullable
@@ -210,13 +249,15 @@ class __$$PokemonImplCopyWithImpl<$Res>
 class _$PokemonImpl with DiagnosticableTreeMixin implements _Pokemon {
   const _$PokemonImpl(
       {required this.pokemonId,
+      required this.specieName,
+      required this.specieUrl,
       required this.name,
-      required this.imageUrl,
+      required this.sprites,
       required this.height,
       required this.weight,
       required this.baseExperience,
       required final List<PokemonAbility> abilities,
-      required final List<PokemonType> types,
+      required final List<GenericType> types,
       required final List<PokemonMove> moves,
       required final List<PokemonStat> stats})
       : _abilities = abilities,
@@ -227,9 +268,13 @@ class _$PokemonImpl with DiagnosticableTreeMixin implements _Pokemon {
   @override
   final NonEmptyString pokemonId;
   @override
+  final NonEmptyString specieName;
+  @override
+  final NonEmptyString specieUrl;
+  @override
   final NonEmptyString name;
   @override
-  final NonEmptyString imageUrl;
+  final PokemonSprites sprites;
   @override
   final NonEmptyString height;
   @override
@@ -244,9 +289,9 @@ class _$PokemonImpl with DiagnosticableTreeMixin implements _Pokemon {
     return EqualUnmodifiableListView(_abilities);
   }
 
-  final List<PokemonType> _types;
+  final List<GenericType> _types;
   @override
-  List<PokemonType> get types {
+  List<GenericType> get types {
     if (_types is EqualUnmodifiableListView) return _types;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_types);
@@ -270,7 +315,7 @@ class _$PokemonImpl with DiagnosticableTreeMixin implements _Pokemon {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Pokemon(pokemonId: $pokemonId, name: $name, imageUrl: $imageUrl, height: $height, weight: $weight, baseExperience: $baseExperience, abilities: $abilities, types: $types, moves: $moves, stats: $stats)';
+    return 'Pokemon(pokemonId: $pokemonId, specieName: $specieName, specieUrl: $specieUrl, name: $name, sprites: $sprites, height: $height, weight: $weight, baseExperience: $baseExperience, abilities: $abilities, types: $types, moves: $moves, stats: $stats)';
   }
 
   @override
@@ -279,8 +324,10 @@ class _$PokemonImpl with DiagnosticableTreeMixin implements _Pokemon {
     properties
       ..add(DiagnosticsProperty('type', 'Pokemon'))
       ..add(DiagnosticsProperty('pokemonId', pokemonId))
+      ..add(DiagnosticsProperty('specieName', specieName))
+      ..add(DiagnosticsProperty('specieUrl', specieUrl))
       ..add(DiagnosticsProperty('name', name))
-      ..add(DiagnosticsProperty('imageUrl', imageUrl))
+      ..add(DiagnosticsProperty('sprites', sprites))
       ..add(DiagnosticsProperty('height', height))
       ..add(DiagnosticsProperty('weight', weight))
       ..add(DiagnosticsProperty('baseExperience', baseExperience))
@@ -297,9 +344,12 @@ class _$PokemonImpl with DiagnosticableTreeMixin implements _Pokemon {
             other is _$PokemonImpl &&
             (identical(other.pokemonId, pokemonId) ||
                 other.pokemonId == pokemonId) &&
+            (identical(other.specieName, specieName) ||
+                other.specieName == specieName) &&
+            (identical(other.specieUrl, specieUrl) ||
+                other.specieUrl == specieUrl) &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.imageUrl, imageUrl) ||
-                other.imageUrl == imageUrl) &&
+            (identical(other.sprites, sprites) || other.sprites == sprites) &&
             (identical(other.height, height) || other.height == height) &&
             (identical(other.weight, weight) || other.weight == weight) &&
             (identical(other.baseExperience, baseExperience) ||
@@ -315,8 +365,10 @@ class _$PokemonImpl with DiagnosticableTreeMixin implements _Pokemon {
   int get hashCode => Object.hash(
       runtimeType,
       pokemonId,
+      specieName,
+      specieUrl,
       name,
-      imageUrl,
+      sprites,
       height,
       weight,
       baseExperience,
@@ -335,22 +387,28 @@ class _$PokemonImpl with DiagnosticableTreeMixin implements _Pokemon {
 abstract class _Pokemon implements Pokemon {
   const factory _Pokemon(
       {required final NonEmptyString pokemonId,
+      required final NonEmptyString specieName,
+      required final NonEmptyString specieUrl,
       required final NonEmptyString name,
-      required final NonEmptyString imageUrl,
+      required final PokemonSprites sprites,
       required final NonEmptyString height,
       required final NonEmptyString weight,
       required final NonEmptyString baseExperience,
       required final List<PokemonAbility> abilities,
-      required final List<PokemonType> types,
+      required final List<GenericType> types,
       required final List<PokemonMove> moves,
       required final List<PokemonStat> stats}) = _$PokemonImpl;
 
   @override
   NonEmptyString get pokemonId;
   @override
+  NonEmptyString get specieName;
+  @override
+  NonEmptyString get specieUrl;
+  @override
   NonEmptyString get name;
   @override
-  NonEmptyString get imageUrl;
+  PokemonSprites get sprites;
   @override
   NonEmptyString get height;
   @override
@@ -360,7 +418,7 @@ abstract class _Pokemon implements Pokemon {
   @override
   List<PokemonAbility> get abilities;
   @override
-  List<PokemonType> get types;
+  List<GenericType> get types;
   @override
   List<PokemonMove> get moves;
   @override
@@ -368,6 +426,680 @@ abstract class _Pokemon implements Pokemon {
   @override
   @JsonKey(ignore: true)
   _$$PokemonImplCopyWith<_$PokemonImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+mixin _$PokemonSprites {
+  String? get backFemale => throw _privateConstructorUsedError;
+  String? get backShinyFemale => throw _privateConstructorUsedError;
+  String? get frontFemale => throw _privateConstructorUsedError;
+  String? get frontShinyFemale => throw _privateConstructorUsedError;
+  String? get showdownBackFemale => throw _privateConstructorUsedError;
+  String? get showdownBackShinyFemale => throw _privateConstructorUsedError;
+  String? get showdownFrontFemale => throw _privateConstructorUsedError;
+  String? get showdownFrontShinyFemale => throw _privateConstructorUsedError;
+  String? get dreamWoldFrontDefault => throw _privateConstructorUsedError;
+  String? get dreamWoldFrontFemale => throw _privateConstructorUsedError;
+  String? get homeFrontFemale => throw _privateConstructorUsedError;
+  String? get homeFrontShinyFemale => throw _privateConstructorUsedError;
+  String? get backDefault => throw _privateConstructorUsedError;
+  String? get backShiny => throw _privateConstructorUsedError;
+  NonEmptyString get frontDefault => throw _privateConstructorUsedError;
+  NonEmptyString get frontShiny => throw _privateConstructorUsedError;
+  NonEmptyString get showdownBackDefault => throw _privateConstructorUsedError;
+  NonEmptyString get showdownBackShiny => throw _privateConstructorUsedError;
+  NonEmptyString get showdownFrontDefault => throw _privateConstructorUsedError;
+  NonEmptyString get showdownFrontShiny => throw _privateConstructorUsedError;
+  NonEmptyString get homeFrontDefault => throw _privateConstructorUsedError;
+  NonEmptyString get homeFrontShiny => throw _privateConstructorUsedError;
+  NonEmptyString get officialArtworkFrontDefault =>
+      throw _privateConstructorUsedError;
+  NonEmptyString get officialArtworkFrontShiny =>
+      throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $PokemonSpritesCopyWith<PokemonSprites> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $PokemonSpritesCopyWith<$Res> {
+  factory $PokemonSpritesCopyWith(
+          PokemonSprites value, $Res Function(PokemonSprites) then) =
+      _$PokemonSpritesCopyWithImpl<$Res, PokemonSprites>;
+  @useResult
+  $Res call(
+      {String? backFemale,
+      String? backShinyFemale,
+      String? frontFemale,
+      String? frontShinyFemale,
+      String? showdownBackFemale,
+      String? showdownBackShinyFemale,
+      String? showdownFrontFemale,
+      String? showdownFrontShinyFemale,
+      String? dreamWoldFrontDefault,
+      String? dreamWoldFrontFemale,
+      String? homeFrontFemale,
+      String? homeFrontShinyFemale,
+      String? backDefault,
+      String? backShiny,
+      NonEmptyString frontDefault,
+      NonEmptyString frontShiny,
+      NonEmptyString showdownBackDefault,
+      NonEmptyString showdownBackShiny,
+      NonEmptyString showdownFrontDefault,
+      NonEmptyString showdownFrontShiny,
+      NonEmptyString homeFrontDefault,
+      NonEmptyString homeFrontShiny,
+      NonEmptyString officialArtworkFrontDefault,
+      NonEmptyString officialArtworkFrontShiny});
+}
+
+/// @nodoc
+class _$PokemonSpritesCopyWithImpl<$Res, $Val extends PokemonSprites>
+    implements $PokemonSpritesCopyWith<$Res> {
+  _$PokemonSpritesCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? backFemale = freezed,
+    Object? backShinyFemale = freezed,
+    Object? frontFemale = freezed,
+    Object? frontShinyFemale = freezed,
+    Object? showdownBackFemale = freezed,
+    Object? showdownBackShinyFemale = freezed,
+    Object? showdownFrontFemale = freezed,
+    Object? showdownFrontShinyFemale = freezed,
+    Object? dreamWoldFrontDefault = freezed,
+    Object? dreamWoldFrontFemale = freezed,
+    Object? homeFrontFemale = freezed,
+    Object? homeFrontShinyFemale = freezed,
+    Object? backDefault = freezed,
+    Object? backShiny = freezed,
+    Object? frontDefault = null,
+    Object? frontShiny = null,
+    Object? showdownBackDefault = null,
+    Object? showdownBackShiny = null,
+    Object? showdownFrontDefault = null,
+    Object? showdownFrontShiny = null,
+    Object? homeFrontDefault = null,
+    Object? homeFrontShiny = null,
+    Object? officialArtworkFrontDefault = null,
+    Object? officialArtworkFrontShiny = null,
+  }) {
+    return _then(_value.copyWith(
+      backFemale: freezed == backFemale
+          ? _value.backFemale
+          : backFemale // ignore: cast_nullable_to_non_nullable
+              as String?,
+      backShinyFemale: freezed == backShinyFemale
+          ? _value.backShinyFemale
+          : backShinyFemale // ignore: cast_nullable_to_non_nullable
+              as String?,
+      frontFemale: freezed == frontFemale
+          ? _value.frontFemale
+          : frontFemale // ignore: cast_nullable_to_non_nullable
+              as String?,
+      frontShinyFemale: freezed == frontShinyFemale
+          ? _value.frontShinyFemale
+          : frontShinyFemale // ignore: cast_nullable_to_non_nullable
+              as String?,
+      showdownBackFemale: freezed == showdownBackFemale
+          ? _value.showdownBackFemale
+          : showdownBackFemale // ignore: cast_nullable_to_non_nullable
+              as String?,
+      showdownBackShinyFemale: freezed == showdownBackShinyFemale
+          ? _value.showdownBackShinyFemale
+          : showdownBackShinyFemale // ignore: cast_nullable_to_non_nullable
+              as String?,
+      showdownFrontFemale: freezed == showdownFrontFemale
+          ? _value.showdownFrontFemale
+          : showdownFrontFemale // ignore: cast_nullable_to_non_nullable
+              as String?,
+      showdownFrontShinyFemale: freezed == showdownFrontShinyFemale
+          ? _value.showdownFrontShinyFemale
+          : showdownFrontShinyFemale // ignore: cast_nullable_to_non_nullable
+              as String?,
+      dreamWoldFrontDefault: freezed == dreamWoldFrontDefault
+          ? _value.dreamWoldFrontDefault
+          : dreamWoldFrontDefault // ignore: cast_nullable_to_non_nullable
+              as String?,
+      dreamWoldFrontFemale: freezed == dreamWoldFrontFemale
+          ? _value.dreamWoldFrontFemale
+          : dreamWoldFrontFemale // ignore: cast_nullable_to_non_nullable
+              as String?,
+      homeFrontFemale: freezed == homeFrontFemale
+          ? _value.homeFrontFemale
+          : homeFrontFemale // ignore: cast_nullable_to_non_nullable
+              as String?,
+      homeFrontShinyFemale: freezed == homeFrontShinyFemale
+          ? _value.homeFrontShinyFemale
+          : homeFrontShinyFemale // ignore: cast_nullable_to_non_nullable
+              as String?,
+      backDefault: freezed == backDefault
+          ? _value.backDefault
+          : backDefault // ignore: cast_nullable_to_non_nullable
+              as String?,
+      backShiny: freezed == backShiny
+          ? _value.backShiny
+          : backShiny // ignore: cast_nullable_to_non_nullable
+              as String?,
+      frontDefault: null == frontDefault
+          ? _value.frontDefault
+          : frontDefault // ignore: cast_nullable_to_non_nullable
+              as NonEmptyString,
+      frontShiny: null == frontShiny
+          ? _value.frontShiny
+          : frontShiny // ignore: cast_nullable_to_non_nullable
+              as NonEmptyString,
+      showdownBackDefault: null == showdownBackDefault
+          ? _value.showdownBackDefault
+          : showdownBackDefault // ignore: cast_nullable_to_non_nullable
+              as NonEmptyString,
+      showdownBackShiny: null == showdownBackShiny
+          ? _value.showdownBackShiny
+          : showdownBackShiny // ignore: cast_nullable_to_non_nullable
+              as NonEmptyString,
+      showdownFrontDefault: null == showdownFrontDefault
+          ? _value.showdownFrontDefault
+          : showdownFrontDefault // ignore: cast_nullable_to_non_nullable
+              as NonEmptyString,
+      showdownFrontShiny: null == showdownFrontShiny
+          ? _value.showdownFrontShiny
+          : showdownFrontShiny // ignore: cast_nullable_to_non_nullable
+              as NonEmptyString,
+      homeFrontDefault: null == homeFrontDefault
+          ? _value.homeFrontDefault
+          : homeFrontDefault // ignore: cast_nullable_to_non_nullable
+              as NonEmptyString,
+      homeFrontShiny: null == homeFrontShiny
+          ? _value.homeFrontShiny
+          : homeFrontShiny // ignore: cast_nullable_to_non_nullable
+              as NonEmptyString,
+      officialArtworkFrontDefault: null == officialArtworkFrontDefault
+          ? _value.officialArtworkFrontDefault
+          : officialArtworkFrontDefault // ignore: cast_nullable_to_non_nullable
+              as NonEmptyString,
+      officialArtworkFrontShiny: null == officialArtworkFrontShiny
+          ? _value.officialArtworkFrontShiny
+          : officialArtworkFrontShiny // ignore: cast_nullable_to_non_nullable
+              as NonEmptyString,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$PokemonSpritesImplCopyWith<$Res>
+    implements $PokemonSpritesCopyWith<$Res> {
+  factory _$$PokemonSpritesImplCopyWith(_$PokemonSpritesImpl value,
+          $Res Function(_$PokemonSpritesImpl) then) =
+      __$$PokemonSpritesImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {String? backFemale,
+      String? backShinyFemale,
+      String? frontFemale,
+      String? frontShinyFemale,
+      String? showdownBackFemale,
+      String? showdownBackShinyFemale,
+      String? showdownFrontFemale,
+      String? showdownFrontShinyFemale,
+      String? dreamWoldFrontDefault,
+      String? dreamWoldFrontFemale,
+      String? homeFrontFemale,
+      String? homeFrontShinyFemale,
+      String? backDefault,
+      String? backShiny,
+      NonEmptyString frontDefault,
+      NonEmptyString frontShiny,
+      NonEmptyString showdownBackDefault,
+      NonEmptyString showdownBackShiny,
+      NonEmptyString showdownFrontDefault,
+      NonEmptyString showdownFrontShiny,
+      NonEmptyString homeFrontDefault,
+      NonEmptyString homeFrontShiny,
+      NonEmptyString officialArtworkFrontDefault,
+      NonEmptyString officialArtworkFrontShiny});
+}
+
+/// @nodoc
+class __$$PokemonSpritesImplCopyWithImpl<$Res>
+    extends _$PokemonSpritesCopyWithImpl<$Res, _$PokemonSpritesImpl>
+    implements _$$PokemonSpritesImplCopyWith<$Res> {
+  __$$PokemonSpritesImplCopyWithImpl(
+      _$PokemonSpritesImpl _value, $Res Function(_$PokemonSpritesImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? backFemale = freezed,
+    Object? backShinyFemale = freezed,
+    Object? frontFemale = freezed,
+    Object? frontShinyFemale = freezed,
+    Object? showdownBackFemale = freezed,
+    Object? showdownBackShinyFemale = freezed,
+    Object? showdownFrontFemale = freezed,
+    Object? showdownFrontShinyFemale = freezed,
+    Object? dreamWoldFrontDefault = freezed,
+    Object? dreamWoldFrontFemale = freezed,
+    Object? homeFrontFemale = freezed,
+    Object? homeFrontShinyFemale = freezed,
+    Object? backDefault = freezed,
+    Object? backShiny = freezed,
+    Object? frontDefault = null,
+    Object? frontShiny = null,
+    Object? showdownBackDefault = null,
+    Object? showdownBackShiny = null,
+    Object? showdownFrontDefault = null,
+    Object? showdownFrontShiny = null,
+    Object? homeFrontDefault = null,
+    Object? homeFrontShiny = null,
+    Object? officialArtworkFrontDefault = null,
+    Object? officialArtworkFrontShiny = null,
+  }) {
+    return _then(_$PokemonSpritesImpl(
+      backFemale: freezed == backFemale
+          ? _value.backFemale
+          : backFemale // ignore: cast_nullable_to_non_nullable
+              as String?,
+      backShinyFemale: freezed == backShinyFemale
+          ? _value.backShinyFemale
+          : backShinyFemale // ignore: cast_nullable_to_non_nullable
+              as String?,
+      frontFemale: freezed == frontFemale
+          ? _value.frontFemale
+          : frontFemale // ignore: cast_nullable_to_non_nullable
+              as String?,
+      frontShinyFemale: freezed == frontShinyFemale
+          ? _value.frontShinyFemale
+          : frontShinyFemale // ignore: cast_nullable_to_non_nullable
+              as String?,
+      showdownBackFemale: freezed == showdownBackFemale
+          ? _value.showdownBackFemale
+          : showdownBackFemale // ignore: cast_nullable_to_non_nullable
+              as String?,
+      showdownBackShinyFemale: freezed == showdownBackShinyFemale
+          ? _value.showdownBackShinyFemale
+          : showdownBackShinyFemale // ignore: cast_nullable_to_non_nullable
+              as String?,
+      showdownFrontFemale: freezed == showdownFrontFemale
+          ? _value.showdownFrontFemale
+          : showdownFrontFemale // ignore: cast_nullable_to_non_nullable
+              as String?,
+      showdownFrontShinyFemale: freezed == showdownFrontShinyFemale
+          ? _value.showdownFrontShinyFemale
+          : showdownFrontShinyFemale // ignore: cast_nullable_to_non_nullable
+              as String?,
+      dreamWoldFrontDefault: freezed == dreamWoldFrontDefault
+          ? _value.dreamWoldFrontDefault
+          : dreamWoldFrontDefault // ignore: cast_nullable_to_non_nullable
+              as String?,
+      dreamWoldFrontFemale: freezed == dreamWoldFrontFemale
+          ? _value.dreamWoldFrontFemale
+          : dreamWoldFrontFemale // ignore: cast_nullable_to_non_nullable
+              as String?,
+      homeFrontFemale: freezed == homeFrontFemale
+          ? _value.homeFrontFemale
+          : homeFrontFemale // ignore: cast_nullable_to_non_nullable
+              as String?,
+      homeFrontShinyFemale: freezed == homeFrontShinyFemale
+          ? _value.homeFrontShinyFemale
+          : homeFrontShinyFemale // ignore: cast_nullable_to_non_nullable
+              as String?,
+      backDefault: freezed == backDefault
+          ? _value.backDefault
+          : backDefault // ignore: cast_nullable_to_non_nullable
+              as String?,
+      backShiny: freezed == backShiny
+          ? _value.backShiny
+          : backShiny // ignore: cast_nullable_to_non_nullable
+              as String?,
+      frontDefault: null == frontDefault
+          ? _value.frontDefault
+          : frontDefault // ignore: cast_nullable_to_non_nullable
+              as NonEmptyString,
+      frontShiny: null == frontShiny
+          ? _value.frontShiny
+          : frontShiny // ignore: cast_nullable_to_non_nullable
+              as NonEmptyString,
+      showdownBackDefault: null == showdownBackDefault
+          ? _value.showdownBackDefault
+          : showdownBackDefault // ignore: cast_nullable_to_non_nullable
+              as NonEmptyString,
+      showdownBackShiny: null == showdownBackShiny
+          ? _value.showdownBackShiny
+          : showdownBackShiny // ignore: cast_nullable_to_non_nullable
+              as NonEmptyString,
+      showdownFrontDefault: null == showdownFrontDefault
+          ? _value.showdownFrontDefault
+          : showdownFrontDefault // ignore: cast_nullable_to_non_nullable
+              as NonEmptyString,
+      showdownFrontShiny: null == showdownFrontShiny
+          ? _value.showdownFrontShiny
+          : showdownFrontShiny // ignore: cast_nullable_to_non_nullable
+              as NonEmptyString,
+      homeFrontDefault: null == homeFrontDefault
+          ? _value.homeFrontDefault
+          : homeFrontDefault // ignore: cast_nullable_to_non_nullable
+              as NonEmptyString,
+      homeFrontShiny: null == homeFrontShiny
+          ? _value.homeFrontShiny
+          : homeFrontShiny // ignore: cast_nullable_to_non_nullable
+              as NonEmptyString,
+      officialArtworkFrontDefault: null == officialArtworkFrontDefault
+          ? _value.officialArtworkFrontDefault
+          : officialArtworkFrontDefault // ignore: cast_nullable_to_non_nullable
+              as NonEmptyString,
+      officialArtworkFrontShiny: null == officialArtworkFrontShiny
+          ? _value.officialArtworkFrontShiny
+          : officialArtworkFrontShiny // ignore: cast_nullable_to_non_nullable
+              as NonEmptyString,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$PokemonSpritesImpl
+    with DiagnosticableTreeMixin
+    implements _PokemonSprites {
+  const _$PokemonSpritesImpl(
+      {required this.backFemale,
+      required this.backShinyFemale,
+      required this.frontFemale,
+      required this.frontShinyFemale,
+      required this.showdownBackFemale,
+      required this.showdownBackShinyFemale,
+      required this.showdownFrontFemale,
+      required this.showdownFrontShinyFemale,
+      required this.dreamWoldFrontDefault,
+      required this.dreamWoldFrontFemale,
+      required this.homeFrontFemale,
+      required this.homeFrontShinyFemale,
+      required this.backDefault,
+      required this.backShiny,
+      required this.frontDefault,
+      required this.frontShiny,
+      required this.showdownBackDefault,
+      required this.showdownBackShiny,
+      required this.showdownFrontDefault,
+      required this.showdownFrontShiny,
+      required this.homeFrontDefault,
+      required this.homeFrontShiny,
+      required this.officialArtworkFrontDefault,
+      required this.officialArtworkFrontShiny});
+
+  @override
+  final String? backFemale;
+  @override
+  final String? backShinyFemale;
+  @override
+  final String? frontFemale;
+  @override
+  final String? frontShinyFemale;
+  @override
+  final String? showdownBackFemale;
+  @override
+  final String? showdownBackShinyFemale;
+  @override
+  final String? showdownFrontFemale;
+  @override
+  final String? showdownFrontShinyFemale;
+  @override
+  final String? dreamWoldFrontDefault;
+  @override
+  final String? dreamWoldFrontFemale;
+  @override
+  final String? homeFrontFemale;
+  @override
+  final String? homeFrontShinyFemale;
+  @override
+  final String? backDefault;
+  @override
+  final String? backShiny;
+  @override
+  final NonEmptyString frontDefault;
+  @override
+  final NonEmptyString frontShiny;
+  @override
+  final NonEmptyString showdownBackDefault;
+  @override
+  final NonEmptyString showdownBackShiny;
+  @override
+  final NonEmptyString showdownFrontDefault;
+  @override
+  final NonEmptyString showdownFrontShiny;
+  @override
+  final NonEmptyString homeFrontDefault;
+  @override
+  final NonEmptyString homeFrontShiny;
+  @override
+  final NonEmptyString officialArtworkFrontDefault;
+  @override
+  final NonEmptyString officialArtworkFrontShiny;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'PokemonSprites(backFemale: $backFemale, backShinyFemale: $backShinyFemale, frontFemale: $frontFemale, frontShinyFemale: $frontShinyFemale, showdownBackFemale: $showdownBackFemale, showdownBackShinyFemale: $showdownBackShinyFemale, showdownFrontFemale: $showdownFrontFemale, showdownFrontShinyFemale: $showdownFrontShinyFemale, dreamWoldFrontDefault: $dreamWoldFrontDefault, dreamWoldFrontFemale: $dreamWoldFrontFemale, homeFrontFemale: $homeFrontFemale, homeFrontShinyFemale: $homeFrontShinyFemale, backDefault: $backDefault, backShiny: $backShiny, frontDefault: $frontDefault, frontShiny: $frontShiny, showdownBackDefault: $showdownBackDefault, showdownBackShiny: $showdownBackShiny, showdownFrontDefault: $showdownFrontDefault, showdownFrontShiny: $showdownFrontShiny, homeFrontDefault: $homeFrontDefault, homeFrontShiny: $homeFrontShiny, officialArtworkFrontDefault: $officialArtworkFrontDefault, officialArtworkFrontShiny: $officialArtworkFrontShiny)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'PokemonSprites'))
+      ..add(DiagnosticsProperty('backFemale', backFemale))
+      ..add(DiagnosticsProperty('backShinyFemale', backShinyFemale))
+      ..add(DiagnosticsProperty('frontFemale', frontFemale))
+      ..add(DiagnosticsProperty('frontShinyFemale', frontShinyFemale))
+      ..add(DiagnosticsProperty('showdownBackFemale', showdownBackFemale))
+      ..add(DiagnosticsProperty(
+          'showdownBackShinyFemale', showdownBackShinyFemale))
+      ..add(DiagnosticsProperty('showdownFrontFemale', showdownFrontFemale))
+      ..add(DiagnosticsProperty(
+          'showdownFrontShinyFemale', showdownFrontShinyFemale))
+      ..add(DiagnosticsProperty('dreamWoldFrontDefault', dreamWoldFrontDefault))
+      ..add(DiagnosticsProperty('dreamWoldFrontFemale', dreamWoldFrontFemale))
+      ..add(DiagnosticsProperty('homeFrontFemale', homeFrontFemale))
+      ..add(DiagnosticsProperty('homeFrontShinyFemale', homeFrontShinyFemale))
+      ..add(DiagnosticsProperty('backDefault', backDefault))
+      ..add(DiagnosticsProperty('backShiny', backShiny))
+      ..add(DiagnosticsProperty('frontDefault', frontDefault))
+      ..add(DiagnosticsProperty('frontShiny', frontShiny))
+      ..add(DiagnosticsProperty('showdownBackDefault', showdownBackDefault))
+      ..add(DiagnosticsProperty('showdownBackShiny', showdownBackShiny))
+      ..add(DiagnosticsProperty('showdownFrontDefault', showdownFrontDefault))
+      ..add(DiagnosticsProperty('showdownFrontShiny', showdownFrontShiny))
+      ..add(DiagnosticsProperty('homeFrontDefault', homeFrontDefault))
+      ..add(DiagnosticsProperty('homeFrontShiny', homeFrontShiny))
+      ..add(DiagnosticsProperty(
+          'officialArtworkFrontDefault', officialArtworkFrontDefault))
+      ..add(DiagnosticsProperty(
+          'officialArtworkFrontShiny', officialArtworkFrontShiny));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PokemonSpritesImpl &&
+            (identical(other.backFemale, backFemale) ||
+                other.backFemale == backFemale) &&
+            (identical(other.backShinyFemale, backShinyFemale) ||
+                other.backShinyFemale == backShinyFemale) &&
+            (identical(other.frontFemale, frontFemale) ||
+                other.frontFemale == frontFemale) &&
+            (identical(other.frontShinyFemale, frontShinyFemale) ||
+                other.frontShinyFemale == frontShinyFemale) &&
+            (identical(other.showdownBackFemale, showdownBackFemale) ||
+                other.showdownBackFemale == showdownBackFemale) &&
+            (identical(other.showdownBackShinyFemale, showdownBackShinyFemale) ||
+                other.showdownBackShinyFemale == showdownBackShinyFemale) &&
+            (identical(other.showdownFrontFemale, showdownFrontFemale) ||
+                other.showdownFrontFemale == showdownFrontFemale) &&
+            (identical(other.showdownFrontShinyFemale, showdownFrontShinyFemale) ||
+                other.showdownFrontShinyFemale == showdownFrontShinyFemale) &&
+            (identical(other.dreamWoldFrontDefault, dreamWoldFrontDefault) ||
+                other.dreamWoldFrontDefault == dreamWoldFrontDefault) &&
+            (identical(other.dreamWoldFrontFemale, dreamWoldFrontFemale) ||
+                other.dreamWoldFrontFemale == dreamWoldFrontFemale) &&
+            (identical(other.homeFrontFemale, homeFrontFemale) ||
+                other.homeFrontFemale == homeFrontFemale) &&
+            (identical(other.homeFrontShinyFemale, homeFrontShinyFemale) ||
+                other.homeFrontShinyFemale == homeFrontShinyFemale) &&
+            (identical(other.backDefault, backDefault) ||
+                other.backDefault == backDefault) &&
+            (identical(other.backShiny, backShiny) ||
+                other.backShiny == backShiny) &&
+            (identical(other.frontDefault, frontDefault) ||
+                other.frontDefault == frontDefault) &&
+            (identical(other.frontShiny, frontShiny) ||
+                other.frontShiny == frontShiny) &&
+            (identical(other.showdownBackDefault, showdownBackDefault) ||
+                other.showdownBackDefault == showdownBackDefault) &&
+            (identical(other.showdownBackShiny, showdownBackShiny) ||
+                other.showdownBackShiny == showdownBackShiny) &&
+            (identical(other.showdownFrontDefault, showdownFrontDefault) ||
+                other.showdownFrontDefault == showdownFrontDefault) &&
+            (identical(other.showdownFrontShiny, showdownFrontShiny) ||
+                other.showdownFrontShiny == showdownFrontShiny) &&
+            (identical(other.homeFrontDefault, homeFrontDefault) ||
+                other.homeFrontDefault == homeFrontDefault) &&
+            (identical(other.homeFrontShiny, homeFrontShiny) ||
+                other.homeFrontShiny == homeFrontShiny) &&
+            (identical(other.officialArtworkFrontDefault,
+                    officialArtworkFrontDefault) ||
+                other.officialArtworkFrontDefault ==
+                    officialArtworkFrontDefault) &&
+            (identical(other.officialArtworkFrontShiny, officialArtworkFrontShiny) ||
+                other.officialArtworkFrontShiny == officialArtworkFrontShiny));
+  }
+
+  @override
+  int get hashCode => Object.hashAll([
+        runtimeType,
+        backFemale,
+        backShinyFemale,
+        frontFemale,
+        frontShinyFemale,
+        showdownBackFemale,
+        showdownBackShinyFemale,
+        showdownFrontFemale,
+        showdownFrontShinyFemale,
+        dreamWoldFrontDefault,
+        dreamWoldFrontFemale,
+        homeFrontFemale,
+        homeFrontShinyFemale,
+        backDefault,
+        backShiny,
+        frontDefault,
+        frontShiny,
+        showdownBackDefault,
+        showdownBackShiny,
+        showdownFrontDefault,
+        showdownFrontShiny,
+        homeFrontDefault,
+        homeFrontShiny,
+        officialArtworkFrontDefault,
+        officialArtworkFrontShiny
+      ]);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$PokemonSpritesImplCopyWith<_$PokemonSpritesImpl> get copyWith =>
+      __$$PokemonSpritesImplCopyWithImpl<_$PokemonSpritesImpl>(
+          this, _$identity);
+}
+
+abstract class _PokemonSprites implements PokemonSprites {
+  const factory _PokemonSprites(
+          {required final String? backFemale,
+          required final String? backShinyFemale,
+          required final String? frontFemale,
+          required final String? frontShinyFemale,
+          required final String? showdownBackFemale,
+          required final String? showdownBackShinyFemale,
+          required final String? showdownFrontFemale,
+          required final String? showdownFrontShinyFemale,
+          required final String? dreamWoldFrontDefault,
+          required final String? dreamWoldFrontFemale,
+          required final String? homeFrontFemale,
+          required final String? homeFrontShinyFemale,
+          required final String? backDefault,
+          required final String? backShiny,
+          required final NonEmptyString frontDefault,
+          required final NonEmptyString frontShiny,
+          required final NonEmptyString showdownBackDefault,
+          required final NonEmptyString showdownBackShiny,
+          required final NonEmptyString showdownFrontDefault,
+          required final NonEmptyString showdownFrontShiny,
+          required final NonEmptyString homeFrontDefault,
+          required final NonEmptyString homeFrontShiny,
+          required final NonEmptyString officialArtworkFrontDefault,
+          required final NonEmptyString officialArtworkFrontShiny}) =
+      _$PokemonSpritesImpl;
+
+  @override
+  String? get backFemale;
+  @override
+  String? get backShinyFemale;
+  @override
+  String? get frontFemale;
+  @override
+  String? get frontShinyFemale;
+  @override
+  String? get showdownBackFemale;
+  @override
+  String? get showdownBackShinyFemale;
+  @override
+  String? get showdownFrontFemale;
+  @override
+  String? get showdownFrontShinyFemale;
+  @override
+  String? get dreamWoldFrontDefault;
+  @override
+  String? get dreamWoldFrontFemale;
+  @override
+  String? get homeFrontFemale;
+  @override
+  String? get homeFrontShinyFemale;
+  @override
+  String? get backDefault;
+  @override
+  String? get backShiny;
+  @override
+  NonEmptyString get frontDefault;
+  @override
+  NonEmptyString get frontShiny;
+  @override
+  NonEmptyString get showdownBackDefault;
+  @override
+  NonEmptyString get showdownBackShiny;
+  @override
+  NonEmptyString get showdownFrontDefault;
+  @override
+  NonEmptyString get showdownFrontShiny;
+  @override
+  NonEmptyString get homeFrontDefault;
+  @override
+  NonEmptyString get homeFrontShiny;
+  @override
+  NonEmptyString get officialArtworkFrontDefault;
+  @override
+  NonEmptyString get officialArtworkFrontShiny;
+  @override
+  @JsonKey(ignore: true)
+  _$$PokemonSpritesImplCopyWith<_$PokemonSpritesImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -962,29 +1694,29 @@ abstract class _PokemonVersionGroup implements PokemonVersionGroup {
 }
 
 /// @nodoc
-mixin _$PokemonType {
+mixin _$GenericType {
   NonEmptyString get name => throw _privateConstructorUsedError;
   NonEmptyString get url => throw _privateConstructorUsedError;
   int get slot => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $PokemonTypeCopyWith<PokemonType> get copyWith =>
+  $GenericTypeCopyWith<GenericType> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $PokemonTypeCopyWith<$Res> {
-  factory $PokemonTypeCopyWith(
-          PokemonType value, $Res Function(PokemonType) then) =
-      _$PokemonTypeCopyWithImpl<$Res, PokemonType>;
+abstract class $GenericTypeCopyWith<$Res> {
+  factory $GenericTypeCopyWith(
+          GenericType value, $Res Function(GenericType) then) =
+      _$GenericTypeCopyWithImpl<$Res, GenericType>;
   @useResult
   $Res call({NonEmptyString name, NonEmptyString url, int slot});
 }
 
 /// @nodoc
-class _$PokemonTypeCopyWithImpl<$Res, $Val extends PokemonType>
-    implements $PokemonTypeCopyWith<$Res> {
-  _$PokemonTypeCopyWithImpl(this._value, this._then);
+class _$GenericTypeCopyWithImpl<$Res, $Val extends GenericType>
+    implements $GenericTypeCopyWith<$Res> {
+  _$GenericTypeCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -1016,22 +1748,22 @@ class _$PokemonTypeCopyWithImpl<$Res, $Val extends PokemonType>
 }
 
 /// @nodoc
-abstract class _$$PokemonTypeImplCopyWith<$Res>
-    implements $PokemonTypeCopyWith<$Res> {
-  factory _$$PokemonTypeImplCopyWith(
-          _$PokemonTypeImpl value, $Res Function(_$PokemonTypeImpl) then) =
-      __$$PokemonTypeImplCopyWithImpl<$Res>;
+abstract class _$$GenericTypeImplCopyWith<$Res>
+    implements $GenericTypeCopyWith<$Res> {
+  factory _$$GenericTypeImplCopyWith(
+          _$GenericTypeImpl value, $Res Function(_$GenericTypeImpl) then) =
+      __$$GenericTypeImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({NonEmptyString name, NonEmptyString url, int slot});
 }
 
 /// @nodoc
-class __$$PokemonTypeImplCopyWithImpl<$Res>
-    extends _$PokemonTypeCopyWithImpl<$Res, _$PokemonTypeImpl>
-    implements _$$PokemonTypeImplCopyWith<$Res> {
-  __$$PokemonTypeImplCopyWithImpl(
-      _$PokemonTypeImpl _value, $Res Function(_$PokemonTypeImpl) _then)
+class __$$GenericTypeImplCopyWithImpl<$Res>
+    extends _$GenericTypeCopyWithImpl<$Res, _$GenericTypeImpl>
+    implements _$$GenericTypeImplCopyWith<$Res> {
+  __$$GenericTypeImplCopyWithImpl(
+      _$GenericTypeImpl _value, $Res Function(_$GenericTypeImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1041,7 +1773,7 @@ class __$$PokemonTypeImplCopyWithImpl<$Res>
     Object? url = null,
     Object? slot = null,
   }) {
-    return _then(_$PokemonTypeImpl(
+    return _then(_$GenericTypeImpl(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -1060,8 +1792,8 @@ class __$$PokemonTypeImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$PokemonTypeImpl with DiagnosticableTreeMixin implements _PokemonType {
-  const _$PokemonTypeImpl(
+class _$GenericTypeImpl with DiagnosticableTreeMixin implements _GenericType {
+  const _$GenericTypeImpl(
       {required this.name, required this.url, required this.slot});
 
   @override
@@ -1073,14 +1805,14 @@ class _$PokemonTypeImpl with DiagnosticableTreeMixin implements _PokemonType {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'PokemonType(name: $name, url: $url, slot: $slot)';
+    return 'GenericType(name: $name, url: $url, slot: $slot)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'PokemonType'))
+      ..add(DiagnosticsProperty('type', 'GenericType'))
       ..add(DiagnosticsProperty('name', name))
       ..add(DiagnosticsProperty('url', url))
       ..add(DiagnosticsProperty('slot', slot));
@@ -1090,7 +1822,7 @@ class _$PokemonTypeImpl with DiagnosticableTreeMixin implements _PokemonType {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PokemonTypeImpl &&
+            other is _$GenericTypeImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.url, url) || other.url == url) &&
             (identical(other.slot, slot) || other.slot == slot));
@@ -1102,15 +1834,15 @@ class _$PokemonTypeImpl with DiagnosticableTreeMixin implements _PokemonType {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$PokemonTypeImplCopyWith<_$PokemonTypeImpl> get copyWith =>
-      __$$PokemonTypeImplCopyWithImpl<_$PokemonTypeImpl>(this, _$identity);
+  _$$GenericTypeImplCopyWith<_$GenericTypeImpl> get copyWith =>
+      __$$GenericTypeImplCopyWithImpl<_$GenericTypeImpl>(this, _$identity);
 }
 
-abstract class _PokemonType implements PokemonType {
-  const factory _PokemonType(
+abstract class _GenericType implements GenericType {
+  const factory _GenericType(
       {required final NonEmptyString name,
       required final NonEmptyString url,
-      required final int slot}) = _$PokemonTypeImpl;
+      required final int slot}) = _$GenericTypeImpl;
 
   @override
   NonEmptyString get name;
@@ -1120,7 +1852,7 @@ abstract class _PokemonType implements PokemonType {
   int get slot;
   @override
   @JsonKey(ignore: true)
-  _$$PokemonTypeImplCopyWith<_$PokemonTypeImpl> get copyWith =>
+  _$$GenericTypeImplCopyWith<_$GenericTypeImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

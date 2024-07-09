@@ -8,5 +8,8 @@ class PokeMainEvent with _$PokeMainEvent {
       VoidCallback? onDone}) = _LoadPokemonList;
   const factory PokeMainEvent.downloadPokemonData() = _DownloadPokemonData;
   const factory PokeMainEvent.filterByType(int typeFilterIndex) = _FilterByType;
-  const factory PokeMainEvent.filterByOrder(int orderFilterIndex) = _FilterByOrder;
+  const factory PokeMainEvent.filterByOrder(int orderFilterIndex) =
+      _FilterByOrder;
+  const factory PokeMainEvent.searchPokemon(
+      String searchText, VoidCallback onDone) = _SearchPokemon;
 }

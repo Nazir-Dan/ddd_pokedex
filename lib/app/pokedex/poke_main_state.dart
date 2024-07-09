@@ -24,16 +24,3 @@ class PokeMainState with _$PokeMainState {
         apiFailureOrSuccessOption: none(),
       );
 }
-
-// @freezed
-// class PokeMainState with _$PokeMainState {
-//   const factory PokeMainState.initialState() = InitialState;
-//   const factory PokeMainState.downloadingData(double progress) =
-//       DownloadingData;
-//   const factory PokeMainState.loadingData() = LoadingData;
-//   const factory PokeMainState.loadSuccess(List<Pokemon> pokemonList) =
-//       LoadSuccess;
-//   const factory PokeMainState.downloadSuccess(Unit unit) = DownloadSuccess;
-//   const factory PokeMainState.loadFailure(PokeApiFailure apiException) =
-//       LoadFailure;
-// }

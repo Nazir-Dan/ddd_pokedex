@@ -19,18 +19,22 @@ import 'package:internet_connection_checker/internet_connection_checker.dart'
 
 import 'app/auth/auth_bloc_bloc.dart' as _i18;
 import 'app/auth/sign_in_form/sign_in_form_bloc.dart' as _i16;
-import 'app/pokedex/poke_main_bloc.dart' as _i21;
+import 'app/details/bloc/details_bloc.dart' as _i24;
+import 'app/pokedex/poke_main_bloc.dart' as _i23;
 import 'domain/auth/i_auth_facade.dart' as _i9;
-import 'domain/pokeapi/i_pokeapi_repository.dart' as _i19;
+import 'domain/details/i_poke_details_repository.dart' as _i19;
+import 'domain/pokeapi/i_pokeapi_repository.dart' as _i21;
 import 'domain/profile/i_profile_repository.dart' as _i11;
 import 'infrastructure/auth/firebase_auth_facade.dart' as _i10;
 import 'infrastructure/auth/firebase_user_mapper.dart' as _i7;
+import 'infrastructure/core/data_source/pokemon_local_data_source.dart' as _i14;
+import 'infrastructure/core/data_source/pokemon_remote_data_source.dart'
+    as _i17;
 import 'infrastructure/core/dio_factory.dart' as _i4;
-import 'infrastructure/core/injectable_module.dart' as _i22;
+import 'infrastructure/core/injectable_module.dart' as _i25;
 import 'infrastructure/core/netowrk_info.dart' as _i15;
-import 'infrastructure/data_source/pokemon_local_data_source.dart' as _i14;
-import 'infrastructure/data_source/pokemon_remote_data_source.dart' as _i17;
-import 'infrastructure/pokeapi/pokeapi_repository.dart' as _i20;
+import 'infrastructure/poke_details/poke_details_repository.dart' as _i20;
+import 'infrastructure/pokeapi/pokeapi_repository.dart' as _i22;
 import 'infrastructure/profile/profile_repository.dart' as _i12;
 
 extension GetItInjectableX on _i1.GetIt {
@@ -71,15 +75,25 @@ extension GetItInjectableX on _i1.GetIt {
     gh.lazySingleton<_i17.AppServiceClient>(
         () => _i17.AppServiceClient(gh<_i3.Dio>()));
     gh.factory<_i18.AuthBloc>(() => _i18.AuthBloc(gh<_i9.IAuthFacade>()));
-    gh.lazySingleton<_i19.IPokeapiRepository>(() => _i20.PokeApiRepository(
+    gh.lazySingleton<_i19.IPokeDetailsRepository>(
+        () => _i20.PokeDetailsRepository(
+              gh<_i17.AppServiceClient>(),
+              gh<_i15.NetworkInfo>(),
+              gh<_i14.LocalDataSource>(),
+            ));
+    gh.lazySingleton<_i21.IPokeapiRepository>(() => _i22.PokeApiRepository(
           gh<_i17.AppServiceClient>(),
           gh<_i15.NetworkInfo>(),
           gh<_i14.LocalDataSource>(),
         ));
-    gh.factory<_i21.PokeMainBloc>(
-        () => _i21.PokeMainBloc(gh<_i19.IPokeapiRepository>()));
+    gh.factory<_i23.PokeMainBloc>(
+        () => _i23.PokeMainBloc(gh<_i21.IPokeapiRepository>()));
+    gh.factory<_i24.DetailsBloc>(() => _i24.DetailsBloc(
+          gh<_i19.IPokeDetailsRepository>(),
+          gh<_i21.IPokeapiRepository>(),
+        ));
     return this;
   }
 }
 
-class _$InjectableModules extends _i22.InjectableModules {}
+class _$InjectableModules extends _i25.InjectableModules {}

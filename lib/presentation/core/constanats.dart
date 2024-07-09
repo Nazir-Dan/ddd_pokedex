@@ -22,6 +22,8 @@ class PresentationConstants {
     FilterObject(
         filterName: AppStrings.typeAll, color: ColorManager.cardsDefaultColor),
     FilterObject(
+        filterName: AppStrings.typeNormal, color: ColorManager.typeNormalColor),
+    FilterObject(
         filterName: AppStrings.typeFire, color: ColorManager.typeFireColor),
     FilterObject(
         filterName: AppStrings.typeWater, color: ColorManager.typeWaterColor),

@@ -1,4 +1,4 @@
-import 'package:ddd_pokedex/domain/pokeapi/pokeapi_failure.dart';
+import 'package:ddd_pokedex/domain/pokeapi/pokeapi_failure/pokeapi_failure.dart';
 import 'package:ddd_pokedex/presentation/resources/strings_manager.dart';
 import 'package:dio/dio.dart';
 

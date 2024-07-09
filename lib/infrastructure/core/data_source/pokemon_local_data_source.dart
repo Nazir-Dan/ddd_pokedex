@@ -1,5 +1,6 @@
 import 'package:ddd_pokedex/domain/pokeapi/pokemon.dart';
-import 'package:ddd_pokedex/infrastructure/pokeapi/pokeapi_dtos.dart';
+import 'package:ddd_pokedex/infrastructure/core/mapers/mapers.dart';
+import 'package:ddd_pokedex/infrastructure/pokeapi/dots/pokeapi_dtos.dart';
 import 'package:hive/hive.dart';
 import 'package:injectable/injectable.dart';
 
@@ -9,6 +10,7 @@ abstract class LocalDataSource {
   Future<void> savePokemonDataListToCache(List<PokemonDto> pokemonData);
   Future<void> savePokemonDataToCache(PokemonDto pokemonData);
   Future<List<Pokemon>> getPokemonDataFromCache(int offset, [int limit]);
+  Future<List<Pokemon>> searchPokemon(String searchText);
   void clearCache();
   void removeFromCache(String key);
 }
@@ -22,7 +24,7 @@ class LocalDataSourceImpl implements LocalDataSource {
 
   @override
   Future<void> removeFromCache(String key) async {
-    await Hive.deleteBoxFromDisk(pokemonDataBoxKey);
+    await Hive.deleteBoxFromDisk(key);
   }
 
   @override
@@ -32,20 +34,21 @@ class LocalDataSourceImpl implements LocalDataSource {
     for (var pokemonData in pokemonDataList) {
       await Hive.box(pokemonDataBoxKey).add(pokemonData);
     }
-    await Hive.close();
+    //await Hive.close();
   }
 
   @override
   Future<void> savePokemonDataToCache(PokemonDto pokemonData) async {
     await Hive.openBox(pokemonDataBoxKey);
     await Hive.box(pokemonDataBoxKey).add(pokemonData);
-    await Hive.close();
+    //await Hive.close();
   }
 
   @override
   Future<List<Pokemon>> getPokemonDataFromCache(int offset,
       [int limit = 20]) async {
     List<Pokemon> dataFromCache = [];
+    //removeFromCache(pokemonDataBoxKey);
     var pokemonDataBox = await Hive.openBox(pokemonDataBoxKey);
     var totalLength = pokemonDataBox.length;
     var actualLimit = limit;
@@ -64,5 +67,23 @@ class LocalDataSourceImpl implements LocalDataSource {
     }
     //await Hive.close();
     return dataFromCache;
+  }
+
+  @override
+  Future<List<Pokemon>> searchPokemon(String searchText) async {
+    List<Pokemon> searchResults = [];
+    var pokemonDataBox = Hive.box(pokemonDataBoxKey);
+    var results = pokemonDataBox.values
+        .where(
+          (pokemon) =>
+              pokemon.name.toLowerCase().contains(searchText) ||
+              pokemon.id.toString().contains(searchText),
+        )
+        .toList();
+    for (var element in results) {
+      PokemonDto pokeDto = element;
+      searchResults.add(pokeDto.toDomain());
+    }
+    return searchResults;
   }
 }

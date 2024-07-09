@@ -1,4 +1,5 @@
 import 'package:ddd_pokedex/app/auth/auth_bloc_bloc.dart';
+import 'package:ddd_pokedex/app/details/bloc/details_bloc.dart';
 import 'package:ddd_pokedex/injection.dart';
 import 'package:ddd_pokedex/presentation/resources/theme_manager.dart';
 import 'package:ddd_pokedex/presentation/routes/app_router.dart';
@@ -16,13 +17,15 @@ class App extends StatelessWidget {
           create: (_) =>
               getIt<AuthBloc>()..add(const AuthEvent.authCheckRequested()),
         ),
+        BlocProvider(
+          create: (_) => getIt<DetailsBloc>(),
+        ),
       ],
       child: MaterialApp.router(
-        routerConfig: _appRouter.config(),
-        title: 'Pokedex',
-        debugShowCheckedModeBanner: false,
-        theme: getApplicationTheme()
-      ),
+          routerConfig: _appRouter.config(),
+          title: 'Pokedex',
+          debugShowCheckedModeBanner: false,
+          theme: getApplicationTheme()),
     );
   }
 }

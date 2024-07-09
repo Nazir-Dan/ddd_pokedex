@@ -52,11 +52,13 @@ class AppStrings {
 
   //main/pokedex
   static const pokedex = 'Pokédex';
+  static const num = 'Nº';
   static const noContentTitle = 'You didn\'t download the data :(';
   static const noContentSubtitle =
       'Click on the button below to start the download.';
   static const filterTitleType = 'Select a type';
   static const filterTitleOrder = 'Select an order';
+  static const searchPokemonHint = 'Search Pokémon . . .';
   //main/fav
   static const faves = 'Favorites';
   static const noFavesTitle = 'You didn\'t favorite any Pokémon :(';
@@ -77,6 +79,7 @@ class AppStrings {
 
   //pokemon_Types
   static const typeAll = 'All Types';
+  static const typeNormal = 'Normal';
   static const typeFire = 'Fire';
   static const typeWater = 'Water';
   static const typeFlying = 'Flying';

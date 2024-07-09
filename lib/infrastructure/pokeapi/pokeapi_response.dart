@@ -1,4 +1,4 @@
-import 'package:ddd_pokedex/infrastructure/pokeapi/pokeapi_dtos.dart';
+import 'package:ddd_pokedex/infrastructure/pokeapi/dots/pokeapi_dtos.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'pokeapi_response.freezed.dart';

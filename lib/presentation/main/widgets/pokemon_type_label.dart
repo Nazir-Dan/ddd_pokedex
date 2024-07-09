@@ -12,7 +12,7 @@ class PokemonTypeLabel extends StatelessWidget {
     required this.type,
   });
 
-  final PokemonType type;
+  final GenericType type;
 
   @override
   Widget build(BuildContext context) {
@@ -28,32 +28,38 @@ class PokemonTypeLabel extends StatelessWidget {
           vertical: 3,
           horizontal: 6,
         ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            SizedBox(
-              height: 20,
-              width: 20,
-              child: DecoratedBox(
-                decoration: BoxDecoration(
-                  color: ColorManager.white,
-                  shape: BoxShape.circle,
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(3.0),
-                  child: SvgPicture.asset(
-                    type.typeImage(),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: AppPadding.p4,
+            //vertical: AppPadding.p1,
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              SizedBox(
+                height: AppSize.s24,
+                width: AppSize.s24,
+                child: DecoratedBox(
+                  decoration: BoxDecoration(
+                    color: ColorManager.white,
+                    shape: BoxShape.circle,
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(3.0),
+                    child: SvgPicture.asset(
+                      type.typeImage(),
+                    ),
                   ),
                 ),
               ),
-            ),
-            const SizedBox(width: AppSize.s4),
-            Text(
-              typeName.capitalizeFirst(),
-              style: context.textTheme.labelSmall,
-            )
-          ],
+              const SizedBox(width: AppSize.s4),
+              Text(
+                typeName.capitalizeFirst(),
+                style: context.textTheme.titleSmall,
+              )
+            ],
+          ),
         ),
       ),
     );

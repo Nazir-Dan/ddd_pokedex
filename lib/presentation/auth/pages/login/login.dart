@@ -11,6 +11,7 @@ import 'package:ddd_pokedex/presentation/resources/strings_manager.dart';
 import 'package:ddd_pokedex/presentation/resources/values_manager.dart';
 import 'package:another_flushbar/flushbar.dart';
 import 'package:ddd_pokedex/presentation/routes/app_router.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -52,6 +53,7 @@ class LoginPage extends HookWidget {
           );
         },
         child: Scaffold(
+          resizeToAvoidBottomInset: false,
           appBar: AppBar(
             leading: IconButton(
               icon: const Icon(Icons.arrow_back_ios_new_rounded),

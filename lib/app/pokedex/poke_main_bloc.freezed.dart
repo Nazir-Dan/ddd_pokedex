@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$PokemonLists {
   List<Pokemon> get rawPokemonList => throw _privateConstructorUsedError;
   List<Pokemon> get filteredPokemonList => throw _privateConstructorUsedError;
+  List<Pokemon> get searchedPokemonList => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $PokemonListsCopyWith<PokemonLists> get copyWith =>
@@ -30,7 +31,10 @@ abstract class $PokemonListsCopyWith<$Res> {
           PokemonLists value, $Res Function(PokemonLists) then) =
       _$PokemonListsCopyWithImpl<$Res, PokemonLists>;
   @useResult
-  $Res call({List<Pokemon> rawPokemonList, List<Pokemon> filteredPokemonList});
+  $Res call(
+      {List<Pokemon> rawPokemonList,
+      List<Pokemon> filteredPokemonList,
+      List<Pokemon> searchedPokemonList});
 }
 
 /// @nodoc
@@ -48,6 +52,7 @@ class _$PokemonListsCopyWithImpl<$Res, $Val extends PokemonLists>
   $Res call({
     Object? rawPokemonList = null,
     Object? filteredPokemonList = null,
+    Object? searchedPokemonList = null,
   }) {
     return _then(_value.copyWith(
       rawPokemonList: null == rawPokemonList
@@ -57,6 +62,10 @@ class _$PokemonListsCopyWithImpl<$Res, $Val extends PokemonLists>
       filteredPokemonList: null == filteredPokemonList
           ? _value.filteredPokemonList
           : filteredPokemonList // ignore: cast_nullable_to_non_nullable
+              as List<Pokemon>,
+      searchedPokemonList: null == searchedPokemonList
+          ? _value.searchedPokemonList
+          : searchedPokemonList // ignore: cast_nullable_to_non_nullable
               as List<Pokemon>,
     ) as $Val);
   }
@@ -70,7 +79,10 @@ abstract class _$$PokemonListsImplCopyWith<$Res>
       __$$PokemonListsImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<Pokemon> rawPokemonList, List<Pokemon> filteredPokemonList});
+  $Res call(
+      {List<Pokemon> rawPokemonList,
+      List<Pokemon> filteredPokemonList,
+      List<Pokemon> searchedPokemonList});
 }
 
 /// @nodoc
@@ -86,6 +98,7 @@ class __$$PokemonListsImplCopyWithImpl<$Res>
   $Res call({
     Object? rawPokemonList = null,
     Object? filteredPokemonList = null,
+    Object? searchedPokemonList = null,
   }) {
     return _then(_$PokemonListsImpl(
       rawPokemonList: null == rawPokemonList
@@ -96,6 +109,10 @@ class __$$PokemonListsImplCopyWithImpl<$Res>
           ? _value._filteredPokemonList
           : filteredPokemonList // ignore: cast_nullable_to_non_nullable
               as List<Pokemon>,
+      searchedPokemonList: null == searchedPokemonList
+          ? _value._searchedPokemonList
+          : searchedPokemonList // ignore: cast_nullable_to_non_nullable
+              as List<Pokemon>,
     ));
   }
 }
@@ -105,9 +122,11 @@ class __$$PokemonListsImplCopyWithImpl<$Res>
 class _$PokemonListsImpl implements _PokemonLists {
   const _$PokemonListsImpl(
       {required final List<Pokemon> rawPokemonList,
-      required final List<Pokemon> filteredPokemonList})
+      required final List<Pokemon> filteredPokemonList,
+      required final List<Pokemon> searchedPokemonList})
       : _rawPokemonList = rawPokemonList,
-        _filteredPokemonList = filteredPokemonList;
+        _filteredPokemonList = filteredPokemonList,
+        _searchedPokemonList = searchedPokemonList;
 
   final List<Pokemon> _rawPokemonList;
   @override
@@ -126,9 +145,18 @@ class _$PokemonListsImpl implements _PokemonLists {
     return EqualUnmodifiableListView(_filteredPokemonList);
   }
 
+  final List<Pokemon> _searchedPokemonList;
+  @override
+  List<Pokemon> get searchedPokemonList {
+    if (_searchedPokemonList is EqualUnmodifiableListView)
+      return _searchedPokemonList;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_searchedPokemonList);
+  }
+
   @override
   String toString() {
-    return 'PokemonLists(rawPokemonList: $rawPokemonList, filteredPokemonList: $filteredPokemonList)';
+    return 'PokemonLists(rawPokemonList: $rawPokemonList, filteredPokemonList: $filteredPokemonList, searchedPokemonList: $searchedPokemonList)';
   }
 
   @override
@@ -139,14 +167,17 @@ class _$PokemonListsImpl implements _PokemonLists {
             const DeepCollectionEquality()
                 .equals(other._rawPokemonList, _rawPokemonList) &&
             const DeepCollectionEquality()
-                .equals(other._filteredPokemonList, _filteredPokemonList));
+                .equals(other._filteredPokemonList, _filteredPokemonList) &&
+            const DeepCollectionEquality()
+                .equals(other._searchedPokemonList, _searchedPokemonList));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(_rawPokemonList),
-      const DeepCollectionEquality().hash(_filteredPokemonList));
+      const DeepCollectionEquality().hash(_filteredPokemonList),
+      const DeepCollectionEquality().hash(_searchedPokemonList));
 
   @JsonKey(ignore: true)
   @override
@@ -158,12 +189,15 @@ class _$PokemonListsImpl implements _PokemonLists {
 abstract class _PokemonLists implements PokemonLists {
   const factory _PokemonLists(
       {required final List<Pokemon> rawPokemonList,
-      required final List<Pokemon> filteredPokemonList}) = _$PokemonListsImpl;
+      required final List<Pokemon> filteredPokemonList,
+      required final List<Pokemon> searchedPokemonList}) = _$PokemonListsImpl;
 
   @override
   List<Pokemon> get rawPokemonList;
   @override
   List<Pokemon> get filteredPokemonList;
+  @override
+  List<Pokemon> get searchedPokemonList;
   @override
   @JsonKey(ignore: true)
   _$$PokemonListsImplCopyWith<_$PokemonListsImpl> get copyWith =>
@@ -179,6 +213,8 @@ mixin _$PokeMainEvent {
     required TResult Function() downloadPokemonData,
     required TResult Function(int typeFilterIndex) filterByType,
     required TResult Function(int orderFilterIndex) filterByOrder,
+    required TResult Function(String searchText, VoidCallback onDone)
+        searchPokemon,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -188,6 +224,7 @@ mixin _$PokeMainEvent {
     TResult? Function()? downloadPokemonData,
     TResult? Function(int typeFilterIndex)? filterByType,
     TResult? Function(int orderFilterIndex)? filterByOrder,
+    TResult? Function(String searchText, VoidCallback onDone)? searchPokemon,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -197,6 +234,7 @@ mixin _$PokeMainEvent {
     TResult Function()? downloadPokemonData,
     TResult Function(int typeFilterIndex)? filterByType,
     TResult Function(int orderFilterIndex)? filterByOrder,
+    TResult Function(String searchText, VoidCallback onDone)? searchPokemon,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -206,6 +244,7 @@ mixin _$PokeMainEvent {
     required TResult Function(_DownloadPokemonData value) downloadPokemonData,
     required TResult Function(_FilterByType value) filterByType,
     required TResult Function(_FilterByOrder value) filterByOrder,
+    required TResult Function(_SearchPokemon value) searchPokemon,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -214,6 +253,7 @@ mixin _$PokeMainEvent {
     TResult? Function(_DownloadPokemonData value)? downloadPokemonData,
     TResult? Function(_FilterByType value)? filterByType,
     TResult? Function(_FilterByOrder value)? filterByOrder,
+    TResult? Function(_SearchPokemon value)? searchPokemon,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -222,6 +262,7 @@ mixin _$PokeMainEvent {
     TResult Function(_DownloadPokemonData value)? downloadPokemonData,
     TResult Function(_FilterByType value)? filterByType,
     TResult Function(_FilterByOrder value)? filterByOrder,
+    TResult Function(_SearchPokemon value)? searchPokemon,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -331,6 +372,8 @@ class _$LoadPokemonListImpl implements _LoadPokemonList {
     required TResult Function() downloadPokemonData,
     required TResult Function(int typeFilterIndex) filterByType,
     required TResult Function(int orderFilterIndex) filterByOrder,
+    required TResult Function(String searchText, VoidCallback onDone)
+        searchPokemon,
   }) {
     return loadPokemonList(offset, limit, onDone);
   }
@@ -343,6 +386,7 @@ class _$LoadPokemonListImpl implements _LoadPokemonList {
     TResult? Function()? downloadPokemonData,
     TResult? Function(int typeFilterIndex)? filterByType,
     TResult? Function(int orderFilterIndex)? filterByOrder,
+    TResult? Function(String searchText, VoidCallback onDone)? searchPokemon,
   }) {
     return loadPokemonList?.call(offset, limit, onDone);
   }
@@ -355,6 +399,7 @@ class _$LoadPokemonListImpl implements _LoadPokemonList {
     TResult Function()? downloadPokemonData,
     TResult Function(int typeFilterIndex)? filterByType,
     TResult Function(int orderFilterIndex)? filterByOrder,
+    TResult Function(String searchText, VoidCallback onDone)? searchPokemon,
     required TResult orElse(),
   }) {
     if (loadPokemonList != null) {
@@ -370,6 +415,7 @@ class _$LoadPokemonListImpl implements _LoadPokemonList {
     required TResult Function(_DownloadPokemonData value) downloadPokemonData,
     required TResult Function(_FilterByType value) filterByType,
     required TResult Function(_FilterByOrder value) filterByOrder,
+    required TResult Function(_SearchPokemon value) searchPokemon,
   }) {
     return loadPokemonList(this);
   }
@@ -381,6 +427,7 @@ class _$LoadPokemonListImpl implements _LoadPokemonList {
     TResult? Function(_DownloadPokemonData value)? downloadPokemonData,
     TResult? Function(_FilterByType value)? filterByType,
     TResult? Function(_FilterByOrder value)? filterByOrder,
+    TResult? Function(_SearchPokemon value)? searchPokemon,
   }) {
     return loadPokemonList?.call(this);
   }
@@ -392,6 +439,7 @@ class _$LoadPokemonListImpl implements _LoadPokemonList {
     TResult Function(_DownloadPokemonData value)? downloadPokemonData,
     TResult Function(_FilterByType value)? filterByType,
     TResult Function(_FilterByOrder value)? filterByOrder,
+    TResult Function(_SearchPokemon value)? searchPokemon,
     required TResult orElse(),
   }) {
     if (loadPokemonList != null) {
@@ -459,6 +507,8 @@ class _$DownloadPokemonDataImpl implements _DownloadPokemonData {
     required TResult Function() downloadPokemonData,
     required TResult Function(int typeFilterIndex) filterByType,
     required TResult Function(int orderFilterIndex) filterByOrder,
+    required TResult Function(String searchText, VoidCallback onDone)
+        searchPokemon,
   }) {
     return downloadPokemonData();
   }
@@ -471,6 +521,7 @@ class _$DownloadPokemonDataImpl implements _DownloadPokemonData {
     TResult? Function()? downloadPokemonData,
     TResult? Function(int typeFilterIndex)? filterByType,
     TResult? Function(int orderFilterIndex)? filterByOrder,
+    TResult? Function(String searchText, VoidCallback onDone)? searchPokemon,
   }) {
     return downloadPokemonData?.call();
   }
@@ -483,6 +534,7 @@ class _$DownloadPokemonDataImpl implements _DownloadPokemonData {
     TResult Function()? downloadPokemonData,
     TResult Function(int typeFilterIndex)? filterByType,
     TResult Function(int orderFilterIndex)? filterByOrder,
+    TResult Function(String searchText, VoidCallback onDone)? searchPokemon,
     required TResult orElse(),
   }) {
     if (downloadPokemonData != null) {
@@ -498,6 +550,7 @@ class _$DownloadPokemonDataImpl implements _DownloadPokemonData {
     required TResult Function(_DownloadPokemonData value) downloadPokemonData,
     required TResult Function(_FilterByType value) filterByType,
     required TResult Function(_FilterByOrder value) filterByOrder,
+    required TResult Function(_SearchPokemon value) searchPokemon,
   }) {
     return downloadPokemonData(this);
   }
@@ -509,6 +562,7 @@ class _$DownloadPokemonDataImpl implements _DownloadPokemonData {
     TResult? Function(_DownloadPokemonData value)? downloadPokemonData,
     TResult? Function(_FilterByType value)? filterByType,
     TResult? Function(_FilterByOrder value)? filterByOrder,
+    TResult? Function(_SearchPokemon value)? searchPokemon,
   }) {
     return downloadPokemonData?.call(this);
   }
@@ -520,6 +574,7 @@ class _$DownloadPokemonDataImpl implements _DownloadPokemonData {
     TResult Function(_DownloadPokemonData value)? downloadPokemonData,
     TResult Function(_FilterByType value)? filterByType,
     TResult Function(_FilterByOrder value)? filterByOrder,
+    TResult Function(_SearchPokemon value)? searchPokemon,
     required TResult orElse(),
   }) {
     if (downloadPokemonData != null) {
@@ -603,6 +658,8 @@ class _$FilterByTypeImpl implements _FilterByType {
     required TResult Function() downloadPokemonData,
     required TResult Function(int typeFilterIndex) filterByType,
     required TResult Function(int orderFilterIndex) filterByOrder,
+    required TResult Function(String searchText, VoidCallback onDone)
+        searchPokemon,
   }) {
     return filterByType(typeFilterIndex);
   }
@@ -615,6 +672,7 @@ class _$FilterByTypeImpl implements _FilterByType {
     TResult? Function()? downloadPokemonData,
     TResult? Function(int typeFilterIndex)? filterByType,
     TResult? Function(int orderFilterIndex)? filterByOrder,
+    TResult? Function(String searchText, VoidCallback onDone)? searchPokemon,
   }) {
     return filterByType?.call(typeFilterIndex);
   }
@@ -627,6 +685,7 @@ class _$FilterByTypeImpl implements _FilterByType {
     TResult Function()? downloadPokemonData,
     TResult Function(int typeFilterIndex)? filterByType,
     TResult Function(int orderFilterIndex)? filterByOrder,
+    TResult Function(String searchText, VoidCallback onDone)? searchPokemon,
     required TResult orElse(),
   }) {
     if (filterByType != null) {
@@ -642,6 +701,7 @@ class _$FilterByTypeImpl implements _FilterByType {
     required TResult Function(_DownloadPokemonData value) downloadPokemonData,
     required TResult Function(_FilterByType value) filterByType,
     required TResult Function(_FilterByOrder value) filterByOrder,
+    required TResult Function(_SearchPokemon value) searchPokemon,
   }) {
     return filterByType(this);
   }
@@ -653,6 +713,7 @@ class _$FilterByTypeImpl implements _FilterByType {
     TResult? Function(_DownloadPokemonData value)? downloadPokemonData,
     TResult? Function(_FilterByType value)? filterByType,
     TResult? Function(_FilterByOrder value)? filterByOrder,
+    TResult? Function(_SearchPokemon value)? searchPokemon,
   }) {
     return filterByType?.call(this);
   }
@@ -664,6 +725,7 @@ class _$FilterByTypeImpl implements _FilterByType {
     TResult Function(_DownloadPokemonData value)? downloadPokemonData,
     TResult Function(_FilterByType value)? filterByType,
     TResult Function(_FilterByOrder value)? filterByOrder,
+    TResult Function(_SearchPokemon value)? searchPokemon,
     required TResult orElse(),
   }) {
     if (filterByType != null) {
@@ -752,6 +814,8 @@ class _$FilterByOrderImpl implements _FilterByOrder {
     required TResult Function() downloadPokemonData,
     required TResult Function(int typeFilterIndex) filterByType,
     required TResult Function(int orderFilterIndex) filterByOrder,
+    required TResult Function(String searchText, VoidCallback onDone)
+        searchPokemon,
   }) {
     return filterByOrder(orderFilterIndex);
   }
@@ -764,6 +828,7 @@ class _$FilterByOrderImpl implements _FilterByOrder {
     TResult? Function()? downloadPokemonData,
     TResult? Function(int typeFilterIndex)? filterByType,
     TResult? Function(int orderFilterIndex)? filterByOrder,
+    TResult? Function(String searchText, VoidCallback onDone)? searchPokemon,
   }) {
     return filterByOrder?.call(orderFilterIndex);
   }
@@ -776,6 +841,7 @@ class _$FilterByOrderImpl implements _FilterByOrder {
     TResult Function()? downloadPokemonData,
     TResult Function(int typeFilterIndex)? filterByType,
     TResult Function(int orderFilterIndex)? filterByOrder,
+    TResult Function(String searchText, VoidCallback onDone)? searchPokemon,
     required TResult orElse(),
   }) {
     if (filterByOrder != null) {
@@ -791,6 +857,7 @@ class _$FilterByOrderImpl implements _FilterByOrder {
     required TResult Function(_DownloadPokemonData value) downloadPokemonData,
     required TResult Function(_FilterByType value) filterByType,
     required TResult Function(_FilterByOrder value) filterByOrder,
+    required TResult Function(_SearchPokemon value) searchPokemon,
   }) {
     return filterByOrder(this);
   }
@@ -802,6 +869,7 @@ class _$FilterByOrderImpl implements _FilterByOrder {
     TResult? Function(_DownloadPokemonData value)? downloadPokemonData,
     TResult? Function(_FilterByType value)? filterByType,
     TResult? Function(_FilterByOrder value)? filterByOrder,
+    TResult? Function(_SearchPokemon value)? searchPokemon,
   }) {
     return filterByOrder?.call(this);
   }
@@ -813,6 +881,7 @@ class _$FilterByOrderImpl implements _FilterByOrder {
     TResult Function(_DownloadPokemonData value)? downloadPokemonData,
     TResult Function(_FilterByType value)? filterByType,
     TResult Function(_FilterByOrder value)? filterByOrder,
+    TResult Function(_SearchPokemon value)? searchPokemon,
     required TResult orElse(),
   }) {
     if (filterByOrder != null) {
@@ -829,6 +898,172 @@ abstract class _FilterByOrder implements PokeMainEvent {
   int get orderFilterIndex;
   @JsonKey(ignore: true)
   _$$FilterByOrderImplCopyWith<_$FilterByOrderImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SearchPokemonImplCopyWith<$Res> {
+  factory _$$SearchPokemonImplCopyWith(
+          _$SearchPokemonImpl value, $Res Function(_$SearchPokemonImpl) then) =
+      __$$SearchPokemonImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String searchText, VoidCallback onDone});
+}
+
+/// @nodoc
+class __$$SearchPokemonImplCopyWithImpl<$Res>
+    extends _$PokeMainEventCopyWithImpl<$Res, _$SearchPokemonImpl>
+    implements _$$SearchPokemonImplCopyWith<$Res> {
+  __$$SearchPokemonImplCopyWithImpl(
+      _$SearchPokemonImpl _value, $Res Function(_$SearchPokemonImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? searchText = null,
+    Object? onDone = null,
+  }) {
+    return _then(_$SearchPokemonImpl(
+      null == searchText
+          ? _value.searchText
+          : searchText // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == onDone
+          ? _value.onDone
+          : onDone // ignore: cast_nullable_to_non_nullable
+              as VoidCallback,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SearchPokemonImpl implements _SearchPokemon {
+  const _$SearchPokemonImpl(this.searchText, this.onDone);
+
+  @override
+  final String searchText;
+  @override
+  final VoidCallback onDone;
+
+  @override
+  String toString() {
+    return 'PokeMainEvent.searchPokemon(searchText: $searchText, onDone: $onDone)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SearchPokemonImpl &&
+            (identical(other.searchText, searchText) ||
+                other.searchText == searchText) &&
+            (identical(other.onDone, onDone) || other.onDone == onDone));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, searchText, onDone);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SearchPokemonImplCopyWith<_$SearchPokemonImpl> get copyWith =>
+      __$$SearchPokemonImplCopyWithImpl<_$SearchPokemonImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int offset, int? limit, VoidCallback? onDone)
+        loadPokemonList,
+    required TResult Function() downloadPokemonData,
+    required TResult Function(int typeFilterIndex) filterByType,
+    required TResult Function(int orderFilterIndex) filterByOrder,
+    required TResult Function(String searchText, VoidCallback onDone)
+        searchPokemon,
+  }) {
+    return searchPokemon(searchText, onDone);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int offset, int? limit, VoidCallback? onDone)?
+        loadPokemonList,
+    TResult? Function()? downloadPokemonData,
+    TResult? Function(int typeFilterIndex)? filterByType,
+    TResult? Function(int orderFilterIndex)? filterByOrder,
+    TResult? Function(String searchText, VoidCallback onDone)? searchPokemon,
+  }) {
+    return searchPokemon?.call(searchText, onDone);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int offset, int? limit, VoidCallback? onDone)?
+        loadPokemonList,
+    TResult Function()? downloadPokemonData,
+    TResult Function(int typeFilterIndex)? filterByType,
+    TResult Function(int orderFilterIndex)? filterByOrder,
+    TResult Function(String searchText, VoidCallback onDone)? searchPokemon,
+    required TResult orElse(),
+  }) {
+    if (searchPokemon != null) {
+      return searchPokemon(searchText, onDone);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_LoadPokemonList value) loadPokemonList,
+    required TResult Function(_DownloadPokemonData value) downloadPokemonData,
+    required TResult Function(_FilterByType value) filterByType,
+    required TResult Function(_FilterByOrder value) filterByOrder,
+    required TResult Function(_SearchPokemon value) searchPokemon,
+  }) {
+    return searchPokemon(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoadPokemonList value)? loadPokemonList,
+    TResult? Function(_DownloadPokemonData value)? downloadPokemonData,
+    TResult? Function(_FilterByType value)? filterByType,
+    TResult? Function(_FilterByOrder value)? filterByOrder,
+    TResult? Function(_SearchPokemon value)? searchPokemon,
+  }) {
+    return searchPokemon?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoadPokemonList value)? loadPokemonList,
+    TResult Function(_DownloadPokemonData value)? downloadPokemonData,
+    TResult Function(_FilterByType value)? filterByType,
+    TResult Function(_FilterByOrder value)? filterByOrder,
+    TResult Function(_SearchPokemon value)? searchPokemon,
+    required TResult orElse(),
+  }) {
+    if (searchPokemon != null) {
+      return searchPokemon(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SearchPokemon implements PokeMainEvent {
+  const factory _SearchPokemon(
+      final String searchText, final VoidCallback onDone) = _$SearchPokemonImpl;
+
+  String get searchText;
+  VoidCallback get onDone;
+  @JsonKey(ignore: true)
+  _$$SearchPokemonImplCopyWith<_$SearchPokemonImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

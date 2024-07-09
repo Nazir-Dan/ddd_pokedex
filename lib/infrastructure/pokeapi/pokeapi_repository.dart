@@ -2,13 +2,14 @@ import 'dart:async';
 
 import 'package:dartz/dartz.dart';
 import 'package:ddd_pokedex/domain/pokeapi/i_pokeapi_repository.dart';
-import 'package:ddd_pokedex/domain/pokeapi/pokeapi_failure.dart';
+import 'package:ddd_pokedex/domain/pokeapi/pokeapi_failure/pokeapi_failure.dart';
 import 'package:ddd_pokedex/domain/pokeapi/pokemon.dart';
 import 'package:ddd_pokedex/infrastructure/core/error_handler.dart';
+import 'package:ddd_pokedex/infrastructure/core/mapers/mapers.dart';
 import 'package:ddd_pokedex/infrastructure/core/netowrk_info.dart';
-import 'package:ddd_pokedex/infrastructure/data_source/pokemon_local_data_source.dart';
-import 'package:ddd_pokedex/infrastructure/pokeapi/pokeapi_dtos.dart';
-import 'package:ddd_pokedex/infrastructure/data_source/pokemon_remote_data_source.dart';
+import 'package:ddd_pokedex/infrastructure/core/data_source/pokemon_local_data_source.dart';
+import 'package:ddd_pokedex/infrastructure/pokeapi/dots/pokeapi_dtos.dart';
+import 'package:ddd_pokedex/infrastructure/core/data_source/pokemon_remote_data_source.dart';
 import 'package:injectable/injectable.dart';
 
 @LazySingleton(as: IPokeapiRepository)
@@ -65,12 +66,11 @@ class PokeApiRepository implements IPokeapiRepository {
     if (await _networkInfo.isConnected) {
       //connected to internet
       try {
-        final response = await _appServiceClient.getPokemonList();
+        final response = await _appServiceClient.getPokemonList(400);
         var statusCode = response.statusCode;
         var statusMessage = response.statusMessage;
         if (statusCode == 200) {
           //success
-          List<PokemonDto> pokemonResultList = [];
           if (response.data != null) {
             var results = response.data!.results;
             var progressPercentage = 1.0;
@@ -120,6 +120,50 @@ class PokeApiRepository implements IPokeapiRepository {
       return pokemonList;
     } catch (e) {
       return [];
+    }
+  }
+
+  @override
+  Future<List<Pokemon>> searchPokemon(String searchText) async {
+    try {
+      var pokemonList = _localDataSource.searchPokemon(searchText);
+      return pokemonList;
+    } catch (e) {
+      return [];
+    }
+  }
+
+  @override
+  Future<Either<PokeApiFailure, Pokemon>> fetchPokemonByName(
+      String name) async {
+    if (await _networkInfo.isConnected) {
+      //connected to internet
+      try {
+        final response = await _appServiceClient.getPokemonByName(name);
+        var statusCode = response.statusCode;
+        var statusMessage = response.statusMessage;
+        if (statusCode == 200) {
+          //success
+          if (response.data != null) {
+            Pokemon result = response.data!.toDomain();
+            return Right(result);
+          } else {
+            return left(PokeApiFailure.apiException(
+                statusCode ?? ApiInternalStatus.failure,
+                statusMessage ?? ResponseMessage.noContent));
+          }
+        } else {
+          //failure, (business error)
+          return left(PokeApiFailure.apiException(
+              statusCode ?? ApiInternalStatus.failure,
+              statusMessage ?? ResponseMessage.defaultException));
+        }
+      } catch (e) {
+        return left(ErrorHandler.handle(e).failure);
+      }
+    } else {
+      //not connected, return connection error
+      return left(DataSource.noInternetConnection.getFailure());
     }
   }
 }

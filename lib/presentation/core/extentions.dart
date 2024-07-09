@@ -4,8 +4,9 @@ import 'package:ddd_pokedex/app/core/app_constants.dart';
 import 'package:ddd_pokedex/domain/pokeapi/pokemon.dart';
 import 'package:ddd_pokedex/presentation/resources/assets_manager.dart';
 import 'package:ddd_pokedex/presentation/resources/color_manager.dart';
+import 'package:flutter/material.dart';
 
-extension PokemonTypeX on PokemonType {
+extension PokemonTypeX on GenericType {
   PokemonTypes fromString(String type) {
     PokemonTypes pokemonType = PokemonTypes.values.firstWhere(
       (e) => e.name.toLowerCase() == type.toLowerCase(),
@@ -152,5 +153,18 @@ extension StringX on String {
 
   String capitalizeFirst() {
     return "${this[0].toUpperCase()}${substring(1).toLowerCase()}";
+  }
+}
+
+extension ListX on List {
+  List<Widget> separateWith(Widget separator) {
+    List<Widget> result = [];
+    for (var i = 0; i < length; i++) {
+      result.add(this[i]);
+      if (i != length - 1) {
+        result.add(separator);
+      }
+    }
+    return result;
   }
 }

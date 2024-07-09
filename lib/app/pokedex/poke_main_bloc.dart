@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:ddd_pokedex/domain/pokeapi/i_pokeapi_repository.dart';
-import 'package:ddd_pokedex/domain/pokeapi/pokeapi_failure.dart';
+import 'package:ddd_pokedex/domain/pokeapi/pokeapi_failure/pokeapi_failure.dart';
 import 'package:ddd_pokedex/domain/pokeapi/pokemon.dart';
 import 'package:ddd_pokedex/presentation/core/constanats.dart';
 import 'package:ddd_pokedex/presentation/core/extentions.dart';
@@ -18,6 +18,21 @@ part 'poke_main_bloc.freezed.dart';
 class PokeMainBloc extends Bloc<PokeMainEvent, PokeMainState> {
   IPokeapiRepository _iPokeapiRepository;
   PokeMainBloc(this._iPokeapiRepository) : super(PokeMainState.initial()) {
+    on<_SearchPokemon>((event, emit) async {
+      emit(state.copyWith(
+        pokemonLists: state.pokemonLists.copyWith(
+          searchedPokemonList: [],
+        ),
+      ));
+      var searchResult =
+          await _iPokeapiRepository.searchPokemon(event.searchText);
+      emit(state.copyWith(
+        pokemonLists: state.pokemonLists.copyWith(
+          searchedPokemonList: searchResult,
+        ),
+      ));
+      event.onDone();
+    });
     on<_DownloadPokemonData>((event, emit) async {
       emit(state.copyWith(
         isDownloading: true,
@@ -137,11 +152,13 @@ class PokemonLists with _$PokemonLists {
   const factory PokemonLists({
     required List<Pokemon> rawPokemonList,
     required List<Pokemon> filteredPokemonList,
+    required List<Pokemon> searchedPokemonList,
   }) = _PokemonLists;
 
   factory PokemonLists.empty() => const PokemonLists(
         rawPokemonList: [],
         filteredPokemonList: [],
+        searchedPokemonList: [],
       );
 }
 

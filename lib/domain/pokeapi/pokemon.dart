@@ -11,13 +11,15 @@ part 'pokemon.freezed.dart';
 abstract class Pokemon with _$Pokemon {
   const factory Pokemon({
     required NonEmptyString pokemonId,
+    required NonEmptyString specieName,
+    required NonEmptyString specieUrl,
     required NonEmptyString name,
-    required NonEmptyString imageUrl,
+    required PokemonSprites sprites,
     required NonEmptyString height,
     required NonEmptyString weight,
     required NonEmptyString baseExperience,
     required List<PokemonAbility> abilities,
-    required List<PokemonType> types,
+    required List<GenericType> types,
     required List<PokemonMove> moves,
     required List<PokemonStat> stats,
   }) = _Pokemon;
@@ -27,10 +29,17 @@ extension PokemonX on Pokemon {
   Option<ValueFailure<dynamic>> get failureOption {
     return pokemonId.failureOrUnit
         .andThen(name.failureOrUnit)
-        .andThen(imageUrl.failureOrUnit)
+        .andThen(specieName.failureOrUnit)
+        .andThen(specieUrl.failureOrUnit)
         .andThen(height.failureOrUnit)
         .andThen(weight.failureOrUnit)
         .andThen(baseExperience.failureOrUnit)
+        .andThen(
+          sprites.failureOption.fold(
+            () => right(unit),
+            (f) => left(f),
+          ),
+        )
         .andThen(
           stats
               .map((stat) => stat.failureOption)
@@ -71,6 +80,52 @@ extension PokemonX on Pokemon {
                 (f) => left(f),
               ),
         )
+        .fold((f) => some(f), (_) => none());
+  }
+}
+
+@freezed
+abstract class PokemonSprites with _$PokemonSprites {
+  const factory PokemonSprites({
+    required String? backFemale,
+    required String? backShinyFemale,
+    required String? frontFemale,
+    required String? frontShinyFemale,
+    required String? showdownBackFemale,
+    required String? showdownBackShinyFemale,
+    required String? showdownFrontFemale,
+    required String? showdownFrontShinyFemale,
+    required String? dreamWoldFrontDefault,
+    required String? dreamWoldFrontFemale,
+    required String? homeFrontFemale,
+    required String? homeFrontShinyFemale,
+    required String? backDefault,
+    required String? backShiny,
+    required NonEmptyString frontDefault,
+    required NonEmptyString frontShiny,
+    required NonEmptyString showdownBackDefault,
+    required NonEmptyString showdownBackShiny,
+    required NonEmptyString showdownFrontDefault,
+    required NonEmptyString showdownFrontShiny,
+    required NonEmptyString homeFrontDefault,
+    required NonEmptyString homeFrontShiny,
+    required NonEmptyString officialArtworkFrontDefault,
+    required NonEmptyString officialArtworkFrontShiny,
+  }) = _PokemonSprites;
+}
+
+extension PokemonSpritesX on PokemonSprites {
+  Option<ValueFailure<dynamic>> get failureOption {
+    return frontDefault.failureOrUnit
+        .andThen(frontShiny.failureOrUnit)
+        .andThen(showdownBackDefault.failureOrUnit)
+        .andThen(showdownBackShiny.failureOrUnit)
+        .andThen(showdownFrontDefault.failureOrUnit)
+        .andThen(showdownFrontShiny.failureOrUnit)
+        .andThen(homeFrontDefault.failureOrUnit)
+        .andThen(homeFrontShiny.failureOrUnit)
+        .andThen(officialArtworkFrontDefault.failureOrUnit)
+        .andThen(officialArtworkFrontShiny.failureOrUnit)
         .fold((f) => some(f), (_) => none());
   }
 }
@@ -132,15 +187,15 @@ extension PokemonVersionGroupX on PokemonVersionGroup {
 }
 
 @freezed
-abstract class PokemonType with _$PokemonType {
-  const factory PokemonType({
+abstract class GenericType with _$GenericType {
+  const factory GenericType({
     required NonEmptyString name,
     required NonEmptyString url,
     required int slot,
-  }) = _PokemonType;
+  }) = _GenericType;
 }
 
-extension PokemonTypeX on PokemonType {
+extension GenericTypeX on GenericType {
   Option<ValueFailure<dynamic>> get failureOption {
     return name.failureOrUnit
         .andThen(url.failureOrUnit)
