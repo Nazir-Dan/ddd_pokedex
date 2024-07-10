@@ -51,25 +51,27 @@ class MainPage extends HookWidget {
           );
         },
         child: Scaffold(
-          appBar: AppBar(
-            title: Text(
-              AppStrings.pokedex,
-              style: context.textTheme.titleLarge,
-            ),
-            actions: [
-              IconButton(
-                icon: const Icon(Icons.exit_to_app),
-                onPressed: () {
-                  context.read<AuthBloc>().add(const AuthEvent.signedOut());
-                },
-              ),
-            ],
+          // appBar: AppBar(
+          //   title: Text(
+          //     AppStrings.pokedex,
+          //     style: context.textTheme.titleLarge,
+          //   ),
+          //   actions: [
+          //     IconButton(
+          //       icon: const Icon(Icons.exit_to_app),
+          //       onPressed: () {
+          //         context.read<AuthBloc>().add(const AuthEvent.signedOut());
+          //       },
+          //     ),
+          //   ],
+          // ),
+          body: SafeArea(
+            child: ValueListenableBuilder(
+                valueListenable: currentPage,
+                builder: (context, value, child) {
+                  return pages[value];
+                }),
           ),
-          body: ValueListenableBuilder(
-              valueListenable: currentPage,
-              builder: (context, value, child) {
-                return pages[value];
-              }),
           bottomNavigationBar: ValueListenableBuilder(
               valueListenable: currentPage,
               builder: (context, value, child) {
