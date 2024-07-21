@@ -40,7 +40,9 @@ class PokeApiRepository implements IPokeapiRepository {
         if (statusCode == 200) {
           //success
           if (response.data != null) {
-            return Right(response.data!);
+            return Right(response.data!.copyWith(
+              isFavorite: false,
+            ));
           } else {
             return left(PokeApiFailure.apiException(
                 statusCode ?? ApiInternalStatus.failure,
@@ -66,7 +68,7 @@ class PokeApiRepository implements IPokeapiRepository {
     if (await _networkInfo.isConnected) {
       //connected to internet
       try {
-        final response = await _appServiceClient.getPokemonList(400);
+        final response = await _appServiceClient.getPokemonList(100);
         var statusCode = response.statusCode;
         var statusMessage = response.statusMessage;
         if (statusCode == 200) {
@@ -78,12 +80,16 @@ class PokeApiRepository implements IPokeapiRepository {
             for (var result in results) {
               var details = await getPokemonDetails(result.url);
               details.fold((l) => l, (r) async {
-                await _localDataSource.savePokemonDataToCache(r);
+                await _localDataSource.savePokemonDataToCache(r.copyWith(
+                  isFavorite: false,
+                ));
                 progressPercentage += 99 / results.length;
                 downloadingProgress.sink.add(progressPercentage);
               });
             }
-            await Future.delayed(Duration(milliseconds: 100));
+            await Future.delayed(
+              const Duration(milliseconds: 100),
+            );
             // var pokemonList = await Future.wait(
             //   results.map(
             //     (pokemon) async {

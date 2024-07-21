@@ -32,13 +32,14 @@ class PokemonDtoImplAdapter extends TypeAdapter<_$PokemonDtoImpl> {
       species: fields[12] as PokemonListObjectDto,
       stats: (fields[13] as List).cast<PokemonStatDto>(),
       types: (fields[14] as List).cast<TypeDto>(),
+      isFavorite: fields[15] as bool?,
     );
   }
 
   @override
   void write(BinaryWriter writer, _$PokemonDtoImpl obj) {
     writer
-      ..writeByte(15)
+      ..writeByte(16)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -59,6 +60,8 @@ class PokemonDtoImplAdapter extends TypeAdapter<_$PokemonDtoImpl> {
       ..write(obj.sprites)
       ..writeByte(12)
       ..write(obj.species)
+      ..writeByte(15)
+      ..write(obj.isFavorite)
       ..writeByte(7)
       ..write(obj.abilities)
       ..writeByte(8)
@@ -664,6 +667,7 @@ _$PokemonDtoImpl _$$PokemonDtoImplFromJson(Map json) => _$PokemonDtoImpl(
       types: (json['types'] as List<dynamic>)
           .map((e) => TypeDto.fromJson(Map<String, dynamic>.from(e as Map)))
           .toList(),
+      isFavorite: json['is_favorite'] as bool?,
     );
 
 Map<String, dynamic> _$$PokemonDtoImplToJson(_$PokemonDtoImpl instance) =>
@@ -683,6 +687,7 @@ Map<String, dynamic> _$$PokemonDtoImplToJson(_$PokemonDtoImpl instance) =>
       'species': instance.species.toJson(),
       'stats': instance.stats.map((e) => e.toJson()).toList(),
       'types': instance.types.map((e) => e.toJson()).toList(),
+      'is_favorite': instance.isFavorite,
     };
 
 _$PokemonListObjectDtoImpl _$$PokemonListObjectDtoImplFromJson(Map json) =>

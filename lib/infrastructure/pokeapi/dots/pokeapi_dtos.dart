@@ -40,6 +40,7 @@ abstract class PokemonDto with _$PokemonDto {
     //A list of base stat values for this Pokémon.
     @HiveField(14) required List<TypeDto> types,
     //A list of details showing types this Pokémon has.
+    @HiveField(15) bool? isFavorite,
   }) = _PokemonDto;
 
   factory PokemonDto.fromJson(Map<String, dynamic> json) =>

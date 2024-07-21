@@ -3,6 +3,7 @@ import 'package:ddd_pokedex/presentation/resources/color_manager.dart';
 import 'package:ddd_pokedex/presentation/resources/font_manager.dart';
 import 'package:ddd_pokedex/presentation/resources/values_manager.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class PokemonStatisticsWidget extends StatelessWidget {
@@ -29,12 +30,14 @@ class PokemonStatisticsWidget extends StatelessWidget {
               child: SvgPicture.asset(icon),
             ),
             const SizedBox(width: AppSize.s4),
-            Text(
-              title,
-              overflow: TextOverflow.ellipsis,
-              style: context.textTheme.labelMedium!.copyWith(
-                fontWeight: FontWeightManager.medium,
-                color: ColorManager.textSubtitleColor,
+            Expanded(
+              child: Text(
+                title,
+                overflow: TextOverflow.ellipsis,
+                style: context.textTheme.labelMedium!.copyWith(
+                  fontWeight: FontWeightManager.medium,
+                  color: ColorManager.textSubtitleColor,
+                ),
               ),
             ),
           ],

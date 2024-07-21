@@ -1,7 +1,7 @@
 import 'package:another_flushbar/flushbar.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:dartz/dartz.dart';
-import 'package:ddd_pokedex/app/details/bloc/details_bloc.dart';
+import 'package:ddd_pokedex/app/details/details_bloc.dart';
 import 'package:ddd_pokedex/app/pokedex/poke_main_bloc.dart';
 import 'package:ddd_pokedex/domain/pokeapi/pokemon.dart';
 import 'package:ddd_pokedex/presentation/core/constanats.dart';
@@ -30,6 +30,7 @@ class PokedexPage extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     final textEditingController = useTextEditingController();
     final scrollController = usePagination(
       () {
@@ -133,6 +134,9 @@ class PokedexPage extends HookWidget {
                                   () {
                                     LoadingScreen.instance().hide();
                                     showBottomSheet(
+                                        constraints: BoxConstraints(
+                                          maxHeight: size.height * 0.8,
+                                        ),
                                         context: context,
                                         builder: (context) {
                                           var searchResults = context
@@ -185,6 +189,16 @@ class PokedexPage extends HookWidget {
                                                           pokemon:
                                                               searchResults[
                                                                   index],
+                                                          toggleFavorite: (id) {
+                                                            context
+                                                                .read<
+                                                                    PokeMainBloc>()
+                                                                .add(
+                                                                  PokeMainEvent
+                                                                      .toggleFavorite(
+                                                                          id),
+                                                                );
+                                                          },
                                                           onTap: () async {
                                                             context
                                                                 .read<
@@ -299,6 +313,11 @@ class PokemonListView extends StatelessWidget {
           var pokemon = pokemonList[index];
           return PokemonListCard(
             pokemon: pokemon,
+            toggleFavorite: (id) {
+              context.read<PokeMainBloc>().add(
+                    PokeMainEvent.toggleFavorite(id),
+                  );
+            },
             onTap: () async {
               context
                   .read<DetailsBloc>()

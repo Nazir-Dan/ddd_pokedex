@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$Pokemon {
   NonEmptyString get pokemonId => throw _privateConstructorUsedError;
   NonEmptyString get specieName => throw _privateConstructorUsedError;
+  bool get isFavorite => throw _privateConstructorUsedError;
   NonEmptyString get specieUrl => throw _privateConstructorUsedError;
   NonEmptyString get name => throw _privateConstructorUsedError;
   PokemonSprites get sprites => throw _privateConstructorUsedError;
@@ -41,6 +42,7 @@ abstract class $PokemonCopyWith<$Res> {
   $Res call(
       {NonEmptyString pokemonId,
       NonEmptyString specieName,
+      bool isFavorite,
       NonEmptyString specieUrl,
       NonEmptyString name,
       PokemonSprites sprites,
@@ -70,6 +72,7 @@ class _$PokemonCopyWithImpl<$Res, $Val extends Pokemon>
   $Res call({
     Object? pokemonId = null,
     Object? specieName = null,
+    Object? isFavorite = null,
     Object? specieUrl = null,
     Object? name = null,
     Object? sprites = null,
@@ -90,6 +93,10 @@ class _$PokemonCopyWithImpl<$Res, $Val extends Pokemon>
           ? _value.specieName
           : specieName // ignore: cast_nullable_to_non_nullable
               as NonEmptyString,
+      isFavorite: null == isFavorite
+          ? _value.isFavorite
+          : isFavorite // ignore: cast_nullable_to_non_nullable
+              as bool,
       specieUrl: null == specieUrl
           ? _value.specieUrl
           : specieUrl // ignore: cast_nullable_to_non_nullable
@@ -152,6 +159,7 @@ abstract class _$$PokemonImplCopyWith<$Res> implements $PokemonCopyWith<$Res> {
   $Res call(
       {NonEmptyString pokemonId,
       NonEmptyString specieName,
+      bool isFavorite,
       NonEmptyString specieUrl,
       NonEmptyString name,
       PokemonSprites sprites,
@@ -180,6 +188,7 @@ class __$$PokemonImplCopyWithImpl<$Res>
   $Res call({
     Object? pokemonId = null,
     Object? specieName = null,
+    Object? isFavorite = null,
     Object? specieUrl = null,
     Object? name = null,
     Object? sprites = null,
@@ -200,6 +209,10 @@ class __$$PokemonImplCopyWithImpl<$Res>
           ? _value.specieName
           : specieName // ignore: cast_nullable_to_non_nullable
               as NonEmptyString,
+      isFavorite: null == isFavorite
+          ? _value.isFavorite
+          : isFavorite // ignore: cast_nullable_to_non_nullable
+              as bool,
       specieUrl: null == specieUrl
           ? _value.specieUrl
           : specieUrl // ignore: cast_nullable_to_non_nullable
@@ -250,6 +263,7 @@ class _$PokemonImpl with DiagnosticableTreeMixin implements _Pokemon {
   const _$PokemonImpl(
       {required this.pokemonId,
       required this.specieName,
+      required this.isFavorite,
       required this.specieUrl,
       required this.name,
       required this.sprites,
@@ -269,6 +283,8 @@ class _$PokemonImpl with DiagnosticableTreeMixin implements _Pokemon {
   final NonEmptyString pokemonId;
   @override
   final NonEmptyString specieName;
+  @override
+  final bool isFavorite;
   @override
   final NonEmptyString specieUrl;
   @override
@@ -315,7 +331,7 @@ class _$PokemonImpl with DiagnosticableTreeMixin implements _Pokemon {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Pokemon(pokemonId: $pokemonId, specieName: $specieName, specieUrl: $specieUrl, name: $name, sprites: $sprites, height: $height, weight: $weight, baseExperience: $baseExperience, abilities: $abilities, types: $types, moves: $moves, stats: $stats)';
+    return 'Pokemon(pokemonId: $pokemonId, specieName: $specieName, isFavorite: $isFavorite, specieUrl: $specieUrl, name: $name, sprites: $sprites, height: $height, weight: $weight, baseExperience: $baseExperience, abilities: $abilities, types: $types, moves: $moves, stats: $stats)';
   }
 
   @override
@@ -325,6 +341,7 @@ class _$PokemonImpl with DiagnosticableTreeMixin implements _Pokemon {
       ..add(DiagnosticsProperty('type', 'Pokemon'))
       ..add(DiagnosticsProperty('pokemonId', pokemonId))
       ..add(DiagnosticsProperty('specieName', specieName))
+      ..add(DiagnosticsProperty('isFavorite', isFavorite))
       ..add(DiagnosticsProperty('specieUrl', specieUrl))
       ..add(DiagnosticsProperty('name', name))
       ..add(DiagnosticsProperty('sprites', sprites))
@@ -346,6 +363,8 @@ class _$PokemonImpl with DiagnosticableTreeMixin implements _Pokemon {
                 other.pokemonId == pokemonId) &&
             (identical(other.specieName, specieName) ||
                 other.specieName == specieName) &&
+            (identical(other.isFavorite, isFavorite) ||
+                other.isFavorite == isFavorite) &&
             (identical(other.specieUrl, specieUrl) ||
                 other.specieUrl == specieUrl) &&
             (identical(other.name, name) || other.name == name) &&
@@ -366,6 +385,7 @@ class _$PokemonImpl with DiagnosticableTreeMixin implements _Pokemon {
       runtimeType,
       pokemonId,
       specieName,
+      isFavorite,
       specieUrl,
       name,
       sprites,
@@ -388,6 +408,7 @@ abstract class _Pokemon implements Pokemon {
   const factory _Pokemon(
       {required final NonEmptyString pokemonId,
       required final NonEmptyString specieName,
+      required final bool isFavorite,
       required final NonEmptyString specieUrl,
       required final NonEmptyString name,
       required final PokemonSprites sprites,
@@ -403,6 +424,8 @@ abstract class _Pokemon implements Pokemon {
   NonEmptyString get pokemonId;
   @override
   NonEmptyString get specieName;
+  @override
+  bool get isFavorite;
   @override
   NonEmptyString get specieUrl;
   @override

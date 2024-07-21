@@ -10,6 +10,8 @@ abstract class LocalDataSource {
   Future<void> savePokemonDataListToCache(List<PokemonDto> pokemonData);
   Future<void> savePokemonDataToCache(PokemonDto pokemonData);
   Future<List<Pokemon>> getPokemonDataFromCache(int offset, [int limit]);
+  Future<List<Pokemon>> getFavoritesFromCache();
+  Future<void> setFavorite(String index);
   Future<List<Pokemon>> searchPokemon(String searchText);
   void clearCache();
   void removeFromCache(String key);
@@ -40,7 +42,7 @@ class LocalDataSourceImpl implements LocalDataSource {
   @override
   Future<void> savePokemonDataToCache(PokemonDto pokemonData) async {
     await Hive.openBox(pokemonDataBoxKey);
-    await Hive.box(pokemonDataBoxKey).add(pokemonData);
+    await Hive.box(pokemonDataBoxKey).put(pokemonData.id, pokemonData);
     //await Hive.close();
   }
 
@@ -85,5 +87,34 @@ class LocalDataSourceImpl implements LocalDataSource {
       searchResults.add(pokeDto.toDomain());
     }
     return searchResults;
+  }
+
+  @override
+  Future<List<Pokemon>> getFavoritesFromCache() async {
+    List<Pokemon> favs = [];
+    var pokemonDataBox = Hive.box(pokemonDataBoxKey);
+    var results = pokemonDataBox.values
+        .where(
+          (pokemon) => pokemon.isFavorite,
+        )
+        .toList();
+    for (var element in results) {
+      PokemonDto pokeDto = element;
+      favs.add(pokeDto.toDomain());
+    }
+    return favs;
+  }
+
+  @override
+  Future<void> setFavorite(String index) async {
+    var pokemonDataBox = Hive.box(pokemonDataBoxKey);
+    int intIndex = int.parse(index);
+    PokemonDto temp = pokemonDataBox.get(intIndex);
+    pokemonDataBox.put(
+      intIndex,
+      temp.copyWith(
+        isFavorite: !temp.isFavorite!,
+      ),
+    );
   }
 }

@@ -211,6 +211,7 @@ mixin _$PokeMainEvent {
     required TResult Function(int offset, int? limit, VoidCallback? onDone)
         loadPokemonList,
     required TResult Function() downloadPokemonData,
+    required TResult Function(String id) toggleFavorite,
     required TResult Function(int typeFilterIndex) filterByType,
     required TResult Function(int orderFilterIndex) filterByOrder,
     required TResult Function(String searchText, VoidCallback onDone)
@@ -222,6 +223,7 @@ mixin _$PokeMainEvent {
     TResult? Function(int offset, int? limit, VoidCallback? onDone)?
         loadPokemonList,
     TResult? Function()? downloadPokemonData,
+    TResult? Function(String id)? toggleFavorite,
     TResult? Function(int typeFilterIndex)? filterByType,
     TResult? Function(int orderFilterIndex)? filterByOrder,
     TResult? Function(String searchText, VoidCallback onDone)? searchPokemon,
@@ -232,6 +234,7 @@ mixin _$PokeMainEvent {
     TResult Function(int offset, int? limit, VoidCallback? onDone)?
         loadPokemonList,
     TResult Function()? downloadPokemonData,
+    TResult Function(String id)? toggleFavorite,
     TResult Function(int typeFilterIndex)? filterByType,
     TResult Function(int orderFilterIndex)? filterByOrder,
     TResult Function(String searchText, VoidCallback onDone)? searchPokemon,
@@ -242,6 +245,7 @@ mixin _$PokeMainEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadPokemonList value) loadPokemonList,
     required TResult Function(_DownloadPokemonData value) downloadPokemonData,
+    required TResult Function(_ToggleFavorite value) toggleFavorite,
     required TResult Function(_FilterByType value) filterByType,
     required TResult Function(_FilterByOrder value) filterByOrder,
     required TResult Function(_SearchPokemon value) searchPokemon,
@@ -251,6 +255,7 @@ mixin _$PokeMainEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoadPokemonList value)? loadPokemonList,
     TResult? Function(_DownloadPokemonData value)? downloadPokemonData,
+    TResult? Function(_ToggleFavorite value)? toggleFavorite,
     TResult? Function(_FilterByType value)? filterByType,
     TResult? Function(_FilterByOrder value)? filterByOrder,
     TResult? Function(_SearchPokemon value)? searchPokemon,
@@ -260,6 +265,7 @@ mixin _$PokeMainEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadPokemonList value)? loadPokemonList,
     TResult Function(_DownloadPokemonData value)? downloadPokemonData,
+    TResult Function(_ToggleFavorite value)? toggleFavorite,
     TResult Function(_FilterByType value)? filterByType,
     TResult Function(_FilterByOrder value)? filterByOrder,
     TResult Function(_SearchPokemon value)? searchPokemon,
@@ -370,6 +376,7 @@ class _$LoadPokemonListImpl implements _LoadPokemonList {
     required TResult Function(int offset, int? limit, VoidCallback? onDone)
         loadPokemonList,
     required TResult Function() downloadPokemonData,
+    required TResult Function(String id) toggleFavorite,
     required TResult Function(int typeFilterIndex) filterByType,
     required TResult Function(int orderFilterIndex) filterByOrder,
     required TResult Function(String searchText, VoidCallback onDone)
@@ -384,6 +391,7 @@ class _$LoadPokemonListImpl implements _LoadPokemonList {
     TResult? Function(int offset, int? limit, VoidCallback? onDone)?
         loadPokemonList,
     TResult? Function()? downloadPokemonData,
+    TResult? Function(String id)? toggleFavorite,
     TResult? Function(int typeFilterIndex)? filterByType,
     TResult? Function(int orderFilterIndex)? filterByOrder,
     TResult? Function(String searchText, VoidCallback onDone)? searchPokemon,
@@ -397,6 +405,7 @@ class _$LoadPokemonListImpl implements _LoadPokemonList {
     TResult Function(int offset, int? limit, VoidCallback? onDone)?
         loadPokemonList,
     TResult Function()? downloadPokemonData,
+    TResult Function(String id)? toggleFavorite,
     TResult Function(int typeFilterIndex)? filterByType,
     TResult Function(int orderFilterIndex)? filterByOrder,
     TResult Function(String searchText, VoidCallback onDone)? searchPokemon,
@@ -413,6 +422,7 @@ class _$LoadPokemonListImpl implements _LoadPokemonList {
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadPokemonList value) loadPokemonList,
     required TResult Function(_DownloadPokemonData value) downloadPokemonData,
+    required TResult Function(_ToggleFavorite value) toggleFavorite,
     required TResult Function(_FilterByType value) filterByType,
     required TResult Function(_FilterByOrder value) filterByOrder,
     required TResult Function(_SearchPokemon value) searchPokemon,
@@ -425,6 +435,7 @@ class _$LoadPokemonListImpl implements _LoadPokemonList {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoadPokemonList value)? loadPokemonList,
     TResult? Function(_DownloadPokemonData value)? downloadPokemonData,
+    TResult? Function(_ToggleFavorite value)? toggleFavorite,
     TResult? Function(_FilterByType value)? filterByType,
     TResult? Function(_FilterByOrder value)? filterByOrder,
     TResult? Function(_SearchPokemon value)? searchPokemon,
@@ -437,6 +448,7 @@ class _$LoadPokemonListImpl implements _LoadPokemonList {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadPokemonList value)? loadPokemonList,
     TResult Function(_DownloadPokemonData value)? downloadPokemonData,
+    TResult Function(_ToggleFavorite value)? toggleFavorite,
     TResult Function(_FilterByType value)? filterByType,
     TResult Function(_FilterByOrder value)? filterByOrder,
     TResult Function(_SearchPokemon value)? searchPokemon,
@@ -505,6 +517,7 @@ class _$DownloadPokemonDataImpl implements _DownloadPokemonData {
     required TResult Function(int offset, int? limit, VoidCallback? onDone)
         loadPokemonList,
     required TResult Function() downloadPokemonData,
+    required TResult Function(String id) toggleFavorite,
     required TResult Function(int typeFilterIndex) filterByType,
     required TResult Function(int orderFilterIndex) filterByOrder,
     required TResult Function(String searchText, VoidCallback onDone)
@@ -519,6 +532,7 @@ class _$DownloadPokemonDataImpl implements _DownloadPokemonData {
     TResult? Function(int offset, int? limit, VoidCallback? onDone)?
         loadPokemonList,
     TResult? Function()? downloadPokemonData,
+    TResult? Function(String id)? toggleFavorite,
     TResult? Function(int typeFilterIndex)? filterByType,
     TResult? Function(int orderFilterIndex)? filterByOrder,
     TResult? Function(String searchText, VoidCallback onDone)? searchPokemon,
@@ -532,6 +546,7 @@ class _$DownloadPokemonDataImpl implements _DownloadPokemonData {
     TResult Function(int offset, int? limit, VoidCallback? onDone)?
         loadPokemonList,
     TResult Function()? downloadPokemonData,
+    TResult Function(String id)? toggleFavorite,
     TResult Function(int typeFilterIndex)? filterByType,
     TResult Function(int orderFilterIndex)? filterByOrder,
     TResult Function(String searchText, VoidCallback onDone)? searchPokemon,
@@ -548,6 +563,7 @@ class _$DownloadPokemonDataImpl implements _DownloadPokemonData {
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadPokemonList value) loadPokemonList,
     required TResult Function(_DownloadPokemonData value) downloadPokemonData,
+    required TResult Function(_ToggleFavorite value) toggleFavorite,
     required TResult Function(_FilterByType value) filterByType,
     required TResult Function(_FilterByOrder value) filterByOrder,
     required TResult Function(_SearchPokemon value) searchPokemon,
@@ -560,6 +576,7 @@ class _$DownloadPokemonDataImpl implements _DownloadPokemonData {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoadPokemonList value)? loadPokemonList,
     TResult? Function(_DownloadPokemonData value)? downloadPokemonData,
+    TResult? Function(_ToggleFavorite value)? toggleFavorite,
     TResult? Function(_FilterByType value)? filterByType,
     TResult? Function(_FilterByOrder value)? filterByOrder,
     TResult? Function(_SearchPokemon value)? searchPokemon,
@@ -572,6 +589,7 @@ class _$DownloadPokemonDataImpl implements _DownloadPokemonData {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadPokemonList value)? loadPokemonList,
     TResult Function(_DownloadPokemonData value)? downloadPokemonData,
+    TResult Function(_ToggleFavorite value)? toggleFavorite,
     TResult Function(_FilterByType value)? filterByType,
     TResult Function(_FilterByOrder value)? filterByOrder,
     TResult Function(_SearchPokemon value)? searchPokemon,
@@ -586,6 +604,168 @@ class _$DownloadPokemonDataImpl implements _DownloadPokemonData {
 
 abstract class _DownloadPokemonData implements PokeMainEvent {
   const factory _DownloadPokemonData() = _$DownloadPokemonDataImpl;
+}
+
+/// @nodoc
+abstract class _$$ToggleFavoriteImplCopyWith<$Res> {
+  factory _$$ToggleFavoriteImplCopyWith(_$ToggleFavoriteImpl value,
+          $Res Function(_$ToggleFavoriteImpl) then) =
+      __$$ToggleFavoriteImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String id});
+}
+
+/// @nodoc
+class __$$ToggleFavoriteImplCopyWithImpl<$Res>
+    extends _$PokeMainEventCopyWithImpl<$Res, _$ToggleFavoriteImpl>
+    implements _$$ToggleFavoriteImplCopyWith<$Res> {
+  __$$ToggleFavoriteImplCopyWithImpl(
+      _$ToggleFavoriteImpl _value, $Res Function(_$ToggleFavoriteImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+  }) {
+    return _then(_$ToggleFavoriteImpl(
+      null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ToggleFavoriteImpl implements _ToggleFavorite {
+  const _$ToggleFavoriteImpl(this.id);
+
+  @override
+  final String id;
+
+  @override
+  String toString() {
+    return 'PokeMainEvent.toggleFavorite(id: $id)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ToggleFavoriteImpl &&
+            (identical(other.id, id) || other.id == id));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, id);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ToggleFavoriteImplCopyWith<_$ToggleFavoriteImpl> get copyWith =>
+      __$$ToggleFavoriteImplCopyWithImpl<_$ToggleFavoriteImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int offset, int? limit, VoidCallback? onDone)
+        loadPokemonList,
+    required TResult Function() downloadPokemonData,
+    required TResult Function(String id) toggleFavorite,
+    required TResult Function(int typeFilterIndex) filterByType,
+    required TResult Function(int orderFilterIndex) filterByOrder,
+    required TResult Function(String searchText, VoidCallback onDone)
+        searchPokemon,
+  }) {
+    return toggleFavorite(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int offset, int? limit, VoidCallback? onDone)?
+        loadPokemonList,
+    TResult? Function()? downloadPokemonData,
+    TResult? Function(String id)? toggleFavorite,
+    TResult? Function(int typeFilterIndex)? filterByType,
+    TResult? Function(int orderFilterIndex)? filterByOrder,
+    TResult? Function(String searchText, VoidCallback onDone)? searchPokemon,
+  }) {
+    return toggleFavorite?.call(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int offset, int? limit, VoidCallback? onDone)?
+        loadPokemonList,
+    TResult Function()? downloadPokemonData,
+    TResult Function(String id)? toggleFavorite,
+    TResult Function(int typeFilterIndex)? filterByType,
+    TResult Function(int orderFilterIndex)? filterByOrder,
+    TResult Function(String searchText, VoidCallback onDone)? searchPokemon,
+    required TResult orElse(),
+  }) {
+    if (toggleFavorite != null) {
+      return toggleFavorite(id);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_LoadPokemonList value) loadPokemonList,
+    required TResult Function(_DownloadPokemonData value) downloadPokemonData,
+    required TResult Function(_ToggleFavorite value) toggleFavorite,
+    required TResult Function(_FilterByType value) filterByType,
+    required TResult Function(_FilterByOrder value) filterByOrder,
+    required TResult Function(_SearchPokemon value) searchPokemon,
+  }) {
+    return toggleFavorite(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoadPokemonList value)? loadPokemonList,
+    TResult? Function(_DownloadPokemonData value)? downloadPokemonData,
+    TResult? Function(_ToggleFavorite value)? toggleFavorite,
+    TResult? Function(_FilterByType value)? filterByType,
+    TResult? Function(_FilterByOrder value)? filterByOrder,
+    TResult? Function(_SearchPokemon value)? searchPokemon,
+  }) {
+    return toggleFavorite?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoadPokemonList value)? loadPokemonList,
+    TResult Function(_DownloadPokemonData value)? downloadPokemonData,
+    TResult Function(_ToggleFavorite value)? toggleFavorite,
+    TResult Function(_FilterByType value)? filterByType,
+    TResult Function(_FilterByOrder value)? filterByOrder,
+    TResult Function(_SearchPokemon value)? searchPokemon,
+    required TResult orElse(),
+  }) {
+    if (toggleFavorite != null) {
+      return toggleFavorite(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ToggleFavorite implements PokeMainEvent {
+  const factory _ToggleFavorite(final String id) = _$ToggleFavoriteImpl;
+
+  String get id;
+  @JsonKey(ignore: true)
+  _$$ToggleFavoriteImplCopyWith<_$ToggleFavoriteImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -656,6 +836,7 @@ class _$FilterByTypeImpl implements _FilterByType {
     required TResult Function(int offset, int? limit, VoidCallback? onDone)
         loadPokemonList,
     required TResult Function() downloadPokemonData,
+    required TResult Function(String id) toggleFavorite,
     required TResult Function(int typeFilterIndex) filterByType,
     required TResult Function(int orderFilterIndex) filterByOrder,
     required TResult Function(String searchText, VoidCallback onDone)
@@ -670,6 +851,7 @@ class _$FilterByTypeImpl implements _FilterByType {
     TResult? Function(int offset, int? limit, VoidCallback? onDone)?
         loadPokemonList,
     TResult? Function()? downloadPokemonData,
+    TResult? Function(String id)? toggleFavorite,
     TResult? Function(int typeFilterIndex)? filterByType,
     TResult? Function(int orderFilterIndex)? filterByOrder,
     TResult? Function(String searchText, VoidCallback onDone)? searchPokemon,
@@ -683,6 +865,7 @@ class _$FilterByTypeImpl implements _FilterByType {
     TResult Function(int offset, int? limit, VoidCallback? onDone)?
         loadPokemonList,
     TResult Function()? downloadPokemonData,
+    TResult Function(String id)? toggleFavorite,
     TResult Function(int typeFilterIndex)? filterByType,
     TResult Function(int orderFilterIndex)? filterByOrder,
     TResult Function(String searchText, VoidCallback onDone)? searchPokemon,
@@ -699,6 +882,7 @@ class _$FilterByTypeImpl implements _FilterByType {
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadPokemonList value) loadPokemonList,
     required TResult Function(_DownloadPokemonData value) downloadPokemonData,
+    required TResult Function(_ToggleFavorite value) toggleFavorite,
     required TResult Function(_FilterByType value) filterByType,
     required TResult Function(_FilterByOrder value) filterByOrder,
     required TResult Function(_SearchPokemon value) searchPokemon,
@@ -711,6 +895,7 @@ class _$FilterByTypeImpl implements _FilterByType {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoadPokemonList value)? loadPokemonList,
     TResult? Function(_DownloadPokemonData value)? downloadPokemonData,
+    TResult? Function(_ToggleFavorite value)? toggleFavorite,
     TResult? Function(_FilterByType value)? filterByType,
     TResult? Function(_FilterByOrder value)? filterByOrder,
     TResult? Function(_SearchPokemon value)? searchPokemon,
@@ -723,6 +908,7 @@ class _$FilterByTypeImpl implements _FilterByType {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadPokemonList value)? loadPokemonList,
     TResult Function(_DownloadPokemonData value)? downloadPokemonData,
+    TResult Function(_ToggleFavorite value)? toggleFavorite,
     TResult Function(_FilterByType value)? filterByType,
     TResult Function(_FilterByOrder value)? filterByOrder,
     TResult Function(_SearchPokemon value)? searchPokemon,
@@ -812,6 +998,7 @@ class _$FilterByOrderImpl implements _FilterByOrder {
     required TResult Function(int offset, int? limit, VoidCallback? onDone)
         loadPokemonList,
     required TResult Function() downloadPokemonData,
+    required TResult Function(String id) toggleFavorite,
     required TResult Function(int typeFilterIndex) filterByType,
     required TResult Function(int orderFilterIndex) filterByOrder,
     required TResult Function(String searchText, VoidCallback onDone)
@@ -826,6 +1013,7 @@ class _$FilterByOrderImpl implements _FilterByOrder {
     TResult? Function(int offset, int? limit, VoidCallback? onDone)?
         loadPokemonList,
     TResult? Function()? downloadPokemonData,
+    TResult? Function(String id)? toggleFavorite,
     TResult? Function(int typeFilterIndex)? filterByType,
     TResult? Function(int orderFilterIndex)? filterByOrder,
     TResult? Function(String searchText, VoidCallback onDone)? searchPokemon,
@@ -839,6 +1027,7 @@ class _$FilterByOrderImpl implements _FilterByOrder {
     TResult Function(int offset, int? limit, VoidCallback? onDone)?
         loadPokemonList,
     TResult Function()? downloadPokemonData,
+    TResult Function(String id)? toggleFavorite,
     TResult Function(int typeFilterIndex)? filterByType,
     TResult Function(int orderFilterIndex)? filterByOrder,
     TResult Function(String searchText, VoidCallback onDone)? searchPokemon,
@@ -855,6 +1044,7 @@ class _$FilterByOrderImpl implements _FilterByOrder {
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadPokemonList value) loadPokemonList,
     required TResult Function(_DownloadPokemonData value) downloadPokemonData,
+    required TResult Function(_ToggleFavorite value) toggleFavorite,
     required TResult Function(_FilterByType value) filterByType,
     required TResult Function(_FilterByOrder value) filterByOrder,
     required TResult Function(_SearchPokemon value) searchPokemon,
@@ -867,6 +1057,7 @@ class _$FilterByOrderImpl implements _FilterByOrder {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoadPokemonList value)? loadPokemonList,
     TResult? Function(_DownloadPokemonData value)? downloadPokemonData,
+    TResult? Function(_ToggleFavorite value)? toggleFavorite,
     TResult? Function(_FilterByType value)? filterByType,
     TResult? Function(_FilterByOrder value)? filterByOrder,
     TResult? Function(_SearchPokemon value)? searchPokemon,
@@ -879,6 +1070,7 @@ class _$FilterByOrderImpl implements _FilterByOrder {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadPokemonList value)? loadPokemonList,
     TResult Function(_DownloadPokemonData value)? downloadPokemonData,
+    TResult Function(_ToggleFavorite value)? toggleFavorite,
     TResult Function(_FilterByType value)? filterByType,
     TResult Function(_FilterByOrder value)? filterByOrder,
     TResult Function(_SearchPokemon value)? searchPokemon,
@@ -977,6 +1169,7 @@ class _$SearchPokemonImpl implements _SearchPokemon {
     required TResult Function(int offset, int? limit, VoidCallback? onDone)
         loadPokemonList,
     required TResult Function() downloadPokemonData,
+    required TResult Function(String id) toggleFavorite,
     required TResult Function(int typeFilterIndex) filterByType,
     required TResult Function(int orderFilterIndex) filterByOrder,
     required TResult Function(String searchText, VoidCallback onDone)
@@ -991,6 +1184,7 @@ class _$SearchPokemonImpl implements _SearchPokemon {
     TResult? Function(int offset, int? limit, VoidCallback? onDone)?
         loadPokemonList,
     TResult? Function()? downloadPokemonData,
+    TResult? Function(String id)? toggleFavorite,
     TResult? Function(int typeFilterIndex)? filterByType,
     TResult? Function(int orderFilterIndex)? filterByOrder,
     TResult? Function(String searchText, VoidCallback onDone)? searchPokemon,
@@ -1004,6 +1198,7 @@ class _$SearchPokemonImpl implements _SearchPokemon {
     TResult Function(int offset, int? limit, VoidCallback? onDone)?
         loadPokemonList,
     TResult Function()? downloadPokemonData,
+    TResult Function(String id)? toggleFavorite,
     TResult Function(int typeFilterIndex)? filterByType,
     TResult Function(int orderFilterIndex)? filterByOrder,
     TResult Function(String searchText, VoidCallback onDone)? searchPokemon,
@@ -1020,6 +1215,7 @@ class _$SearchPokemonImpl implements _SearchPokemon {
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadPokemonList value) loadPokemonList,
     required TResult Function(_DownloadPokemonData value) downloadPokemonData,
+    required TResult Function(_ToggleFavorite value) toggleFavorite,
     required TResult Function(_FilterByType value) filterByType,
     required TResult Function(_FilterByOrder value) filterByOrder,
     required TResult Function(_SearchPokemon value) searchPokemon,
@@ -1032,6 +1228,7 @@ class _$SearchPokemonImpl implements _SearchPokemon {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoadPokemonList value)? loadPokemonList,
     TResult? Function(_DownloadPokemonData value)? downloadPokemonData,
+    TResult? Function(_ToggleFavorite value)? toggleFavorite,
     TResult? Function(_FilterByType value)? filterByType,
     TResult? Function(_FilterByOrder value)? filterByOrder,
     TResult? Function(_SearchPokemon value)? searchPokemon,
@@ -1044,6 +1241,7 @@ class _$SearchPokemonImpl implements _SearchPokemon {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadPokemonList value)? loadPokemonList,
     TResult Function(_DownloadPokemonData value)? downloadPokemonData,
+    TResult Function(_ToggleFavorite value)? toggleFavorite,
     TResult Function(_FilterByType value)? filterByType,
     TResult Function(_FilterByOrder value)? filterByOrder,
     TResult Function(_SearchPokemon value)? searchPokemon,

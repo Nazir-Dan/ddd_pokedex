@@ -9,6 +9,7 @@ extension PokemonDtoX on PokemonDto {
     return Pokemon(
       pokemonId: NonEmptyString('$id'),
       name: NonEmptyString(name),
+      isFavorite: isFavorite ?? false,
       specieName: NonEmptyString(species.name),
       specieUrl: NonEmptyString(species.url),
       sprites: sprites.toDomain(),

@@ -7,6 +7,7 @@ class PokeMainEvent with _$PokeMainEvent {
       int? limit,
       VoidCallback? onDone}) = _LoadPokemonList;
   const factory PokeMainEvent.downloadPokemonData() = _DownloadPokemonData;
+  const factory PokeMainEvent.toggleFavorite(String id) = _ToggleFavorite;
   const factory PokeMainEvent.filterByType(int typeFilterIndex) = _FilterByType;
   const factory PokeMainEvent.filterByOrder(int orderFilterIndex) =
       _FilterByOrder;

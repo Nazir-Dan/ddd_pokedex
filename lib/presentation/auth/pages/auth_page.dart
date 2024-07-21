@@ -12,46 +12,49 @@ class AuthPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: AppPadding.p16),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const SizedBox(height: AppSize.s160),
-            Image.asset(
-              ImageAssets.trainerDouble3,
-            ),
-            const SizedBox(height: AppSize.s40),
-            Text(
-              AppStrings.authMenuTitle,
-              textAlign: TextAlign.center,
-              style: context.textTheme.titleLarge,
-            ),
-            const SizedBox(height: AppSize.s16),
-            Text(
-              AppStrings.authMenuSubtitle,
-              textAlign: TextAlign.center,
-              style: context.textTheme.titleSmall,
-            ),
-            const SizedBox(height: AppSize.s32),
-            SizedBox(
-              width: double.infinity,
-              height: AppSize.s60,
-              child: ElevatedButton(
-                onPressed: () {
-                  context.router.push(const SignUpRoute());
-                },
-                child: const Text(AppStrings.createAcc),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(height: size.height * 0.2),
+              Image.asset(
+                ImageAssets.trainerDouble3,
               ),
-            ),
-            TextButton(
-              onPressed: () {
-                context.router.push(const LoginRoute());
-              },
-              child: const Text(AppStrings.alreadyHaveAcc),
-            )
-          ],
+              const SizedBox(height: AppSize.s40),
+              Text(
+                AppStrings.authMenuTitle,
+                textAlign: TextAlign.center,
+                style: context.textTheme.titleLarge,
+              ),
+              const SizedBox(height: AppSize.s16),
+              Text(
+                AppStrings.authMenuSubtitle,
+                textAlign: TextAlign.center,
+                style: context.textTheme.titleSmall,
+              ),
+              const SizedBox(height: AppSize.s32),
+              SizedBox(
+                width: double.infinity,
+                height: AppSize.s60,
+                child: ElevatedButton(
+                  onPressed: () {
+                    context.router.push(const SignUpRoute());
+                  },
+                  child: const Text(AppStrings.createAcc),
+                ),
+              ),
+              TextButton(
+                onPressed: () {
+                  context.router.push(const LoginRoute());
+                },
+                child: const Text(AppStrings.alreadyHaveAcc),
+              )
+            ],
+          ),
         ),
       ),
     );

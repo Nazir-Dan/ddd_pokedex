@@ -12,6 +12,7 @@ abstract class Pokemon with _$Pokemon {
   const factory Pokemon({
     required NonEmptyString pokemonId,
     required NonEmptyString specieName,
+    required bool isFavorite,
     required NonEmptyString specieUrl,
     required NonEmptyString name,
     required PokemonSprites sprites,

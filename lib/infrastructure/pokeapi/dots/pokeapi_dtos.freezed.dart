@@ -63,7 +63,10 @@ mixin _$PokemonDto {
   List<PokemonStatDto> get stats =>
       throw _privateConstructorUsedError; //A list of base stat values for this Pokémon.
   @HiveField(14)
-  List<TypeDto> get types => throw _privateConstructorUsedError;
+  List<TypeDto> get types =>
+      throw _privateConstructorUsedError; //A list of details showing types this Pokémon has.
+  @HiveField(15)
+  bool? get isFavorite => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -92,7 +95,8 @@ abstract class $PokemonDtoCopyWith<$Res> {
       @HiveField(11) PokemonSpritesDto sprites,
       @HiveField(12) PokemonListObjectDto species,
       @HiveField(13) List<PokemonStatDto> stats,
-      @HiveField(14) List<TypeDto> types});
+      @HiveField(14) List<TypeDto> types,
+      @HiveField(15) bool? isFavorite});
 
   $PokemonSpritesDtoCopyWith<$Res> get sprites;
   $PokemonListObjectDtoCopyWith<$Res> get species;
@@ -126,6 +130,7 @@ class _$PokemonDtoCopyWithImpl<$Res, $Val extends PokemonDto>
     Object? species = null,
     Object? stats = null,
     Object? types = null,
+    Object? isFavorite = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -188,6 +193,10 @@ class _$PokemonDtoCopyWithImpl<$Res, $Val extends PokemonDto>
           ? _value.types
           : types // ignore: cast_nullable_to_non_nullable
               as List<TypeDto>,
+      isFavorite: freezed == isFavorite
+          ? _value.isFavorite
+          : isFavorite // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ) as $Val);
   }
 
@@ -231,7 +240,8 @@ abstract class _$$PokemonDtoImplCopyWith<$Res>
       @HiveField(11) PokemonSpritesDto sprites,
       @HiveField(12) PokemonListObjectDto species,
       @HiveField(13) List<PokemonStatDto> stats,
-      @HiveField(14) List<TypeDto> types});
+      @HiveField(14) List<TypeDto> types,
+      @HiveField(15) bool? isFavorite});
 
   @override
   $PokemonSpritesDtoCopyWith<$Res> get sprites;
@@ -265,6 +275,7 @@ class __$$PokemonDtoImplCopyWithImpl<$Res>
     Object? species = null,
     Object? stats = null,
     Object? types = null,
+    Object? isFavorite = freezed,
   }) {
     return _then(_$PokemonDtoImpl(
       id: null == id
@@ -327,6 +338,10 @@ class __$$PokemonDtoImplCopyWithImpl<$Res>
           ? _value._types
           : types // ignore: cast_nullable_to_non_nullable
               as List<TypeDto>,
+      isFavorite: freezed == isFavorite
+          ? _value.isFavorite
+          : isFavorite // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -351,7 +366,8 @@ class _$PokemonDtoImpl implements _PokemonDto {
       @HiveField(11) required this.sprites,
       @HiveField(12) required this.species,
       @HiveField(13) required final List<PokemonStatDto> stats,
-      @HiveField(14) required final List<TypeDto> types})
+      @HiveField(14) required final List<TypeDto> types,
+      @HiveField(15) this.isFavorite})
       : _abilities = abilities,
         _heldItems = heldItems,
         _moves = moves,
@@ -455,9 +471,14 @@ class _$PokemonDtoImpl implements _PokemonDto {
     return EqualUnmodifiableListView(_types);
   }
 
+//A list of details showing types this Pokémon has.
+  @override
+  @HiveField(15)
+  final bool? isFavorite;
+
   @override
   String toString() {
-    return 'PokemonDto(id: $id, name: $name, baseExperience: $baseExperience, height: $height, isDefault: $isDefault, order: $order, weight: $weight, abilities: $abilities, heldItems: $heldItems, locationAreaEncounters: $locationAreaEncounters, moves: $moves, sprites: $sprites, species: $species, stats: $stats, types: $types)';
+    return 'PokemonDto(id: $id, name: $name, baseExperience: $baseExperience, height: $height, isDefault: $isDefault, order: $order, weight: $weight, abilities: $abilities, heldItems: $heldItems, locationAreaEncounters: $locationAreaEncounters, moves: $moves, sprites: $sprites, species: $species, stats: $stats, types: $types, isFavorite: $isFavorite)';
   }
 
   @override
@@ -484,7 +505,9 @@ class _$PokemonDtoImpl implements _PokemonDto {
             (identical(other.sprites, sprites) || other.sprites == sprites) &&
             (identical(other.species, species) || other.species == species) &&
             const DeepCollectionEquality().equals(other._stats, _stats) &&
-            const DeepCollectionEquality().equals(other._types, _types));
+            const DeepCollectionEquality().equals(other._types, _types) &&
+            (identical(other.isFavorite, isFavorite) ||
+                other.isFavorite == isFavorite));
   }
 
   @JsonKey(ignore: true)
@@ -505,7 +528,8 @@ class _$PokemonDtoImpl implements _PokemonDto {
       sprites,
       species,
       const DeepCollectionEquality().hash(_stats),
-      const DeepCollectionEquality().hash(_types));
+      const DeepCollectionEquality().hash(_types),
+      isFavorite);
 
   @JsonKey(ignore: true)
   @override
@@ -537,7 +561,8 @@ abstract class _PokemonDto implements PokemonDto {
       @HiveField(11) required final PokemonSpritesDto sprites,
       @HiveField(12) required final PokemonListObjectDto species,
       @HiveField(13) required final List<PokemonStatDto> stats,
-      @HiveField(14) required final List<TypeDto> types}) = _$PokemonDtoImpl;
+      @HiveField(14) required final List<TypeDto> types,
+      @HiveField(15) final bool? isFavorite}) = _$PokemonDtoImpl;
 
   factory _PokemonDto.fromJson(Map<String, dynamic> json) =
       _$PokemonDtoImpl.fromJson;
@@ -587,6 +612,9 @@ abstract class _PokemonDto implements PokemonDto {
   @override //A list of base stat values for this Pokémon.
   @HiveField(14)
   List<TypeDto> get types;
+  @override //A list of details showing types this Pokémon has.
+  @HiveField(15)
+  bool? get isFavorite;
   @override
   @JsonKey(ignore: true)
   _$$PokemonDtoImplCopyWith<_$PokemonDtoImpl> get copyWith =>

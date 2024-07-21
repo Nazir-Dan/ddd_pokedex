@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
+import 'package:ddd_pokedex/domain/favorites/i_fave_repository.dart';
 import 'package:ddd_pokedex/domain/pokeapi/i_pokeapi_repository.dart';
 import 'package:ddd_pokedex/domain/pokeapi/pokeapi_failure/pokeapi_failure.dart';
 import 'package:ddd_pokedex/domain/pokeapi/pokemon.dart';
@@ -17,20 +18,49 @@ part 'poke_main_bloc.freezed.dart';
 @injectable
 class PokeMainBloc extends Bloc<PokeMainEvent, PokeMainState> {
   IPokeapiRepository _iPokeapiRepository;
-  PokeMainBloc(this._iPokeapiRepository) : super(PokeMainState.initial()) {
+  IFavRepository _iFavRepository;
+  PokeMainBloc(
+    this._iPokeapiRepository,
+    this._iFavRepository,
+  ) : super(PokeMainState.initial()) {
     on<_SearchPokemon>((event, emit) async {
       emit(state.copyWith(
+        isLoading: true,
+        apiFailureOrSuccessOption: none(),
         pokemonLists: state.pokemonLists.copyWith(
           searchedPokemonList: [],
         ),
       ));
+      List<Pokemon> searchedPokemonList = [];
+      Option<PokeApiFailure> failureOption = none();
       var searchResult =
           await _iPokeapiRepository.searchPokemon(event.searchText);
-      emit(state.copyWith(
-        pokemonLists: state.pokemonLists.copyWith(
-          searchedPokemonList: searchResult,
-        ),
-      ));
+      if (searchResult.isEmpty) {
+        var onlineSearchResult =
+            await _iPokeapiRepository.fetchPokemonByName(event.searchText);
+        onlineSearchResult.fold(
+          (l) => failureOption = some(l),
+          (r) => searchedPokemonList.add(r),
+        );
+      } else {
+        searchedPokemonList.addAll(searchResult);
+      }
+      failureOption.fold(
+        () => emit(state.copyWith(
+          isLoading: false,
+          pokemonLists: state.pokemonLists.copyWith(
+            searchedPokemonList: searchedPokemonList,
+          ),
+          apiFailureOrSuccessOption: none(),
+        )),
+        (a) => emit(state.copyWith(
+          isLoading: false,
+          pokemonLists: state.pokemonLists.copyWith(
+            searchedPokemonList: searchedPokemonList,
+          ),
+          apiFailureOrSuccessOption: some(left(a)),
+        )),
+      );
       event.onDone();
     });
     on<_DownloadPokemonData>((event, emit) async {
@@ -143,6 +173,35 @@ class PokeMainBloc extends Bloc<PokeMainEvent, PokeMainState> {
           filteredPokemonList: orderedList,
         ),
       ));
+    });
+    on<_ToggleFavorite>((event, emit) async {
+      var target = state.pokemonLists.rawPokemonList.firstWhere(
+        (element) => element.pokemonId.getOrCrash() == event.id,
+      );
+      var targetIndex = state.pokemonLists.rawPokemonList
+          .indexWhere((element) => element.pokemonId == target.pokemonId);
+      List<Pokemon> tempRawList = [];
+      tempRawList.addAll(state.pokemonLists.rawPokemonList);
+      tempRawList.setAll(targetIndex, [
+        target.copyWith(
+          isFavorite: !target.isFavorite,
+        ),
+      ]);
+      _iFavRepository.favPokemon(event.id);
+      emit(
+        state.copyWith(
+          pokemonLists: state.pokemonLists.copyWith(
+            rawPokemonList: tempRawList,
+          ),
+        ),
+      );
+
+      add(
+        _FilterByType(state.typeFilterIndex),
+      );
+      add(
+        _FilterByOrder(state.orderFilterIndex),
+      );
     });
   }
 }

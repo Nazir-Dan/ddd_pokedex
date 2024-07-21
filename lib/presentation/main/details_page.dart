@@ -1,5 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:ddd_pokedex/app/details/bloc/details_bloc.dart';
+import 'package:ddd_pokedex/app/details/details_bloc.dart';
 import 'package:ddd_pokedex/domain/details/pokemon_species.dart';
 import 'package:ddd_pokedex/domain/pokeapi/pokemon.dart';
 import 'package:ddd_pokedex/domain/pokeapi/value_objects.dart';
@@ -478,19 +478,22 @@ class DamageRelationRow extends StatelessWidget {
               ),
               const SizedBox(height: AppSize.s8),
               for (var types in damageFromList)
-                Wrap(
-                  alignment: WrapAlignment.center,
-                  runSpacing: AppSize.s4,
-                  children: [
-                    for (var type in types)
-                      PokemonTypeCard(
-                        type: GenericType(
-                          name: NonEmptyString(type.name),
-                          url: NonEmptyString(type.url),
-                          slot: 0,
+                Padding(
+                  padding: const EdgeInsets.all(AppPadding.p2),
+                  child: Wrap(
+                    alignment: WrapAlignment.center,
+                    runSpacing: AppSize.s4,
+                    children: [
+                      for (var type in types)
+                        PokemonTypeCard(
+                          type: GenericType(
+                            name: NonEmptyString(type.name),
+                            url: NonEmptyString(type.url),
+                            slot: 0,
+                          ),
                         ),
-                      ),
-                  ],
+                    ],
+                  ),
                 ),
             ],
           ),

@@ -8,14 +8,17 @@ import 'package:ddd_pokedex/presentation/resources/font_manager.dart';
 import 'package:ddd_pokedex/presentation/resources/strings_manager.dart';
 import 'package:ddd_pokedex/presentation/resources/values_manager.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class PokemonListCard extends StatelessWidget {
   final VoidCallback onTap;
+  final Function(String)? toggleFavorite;
   const PokemonListCard({
     super.key,
     required this.pokemon,
     required this.onTap,
+    this.toggleFavorite,
   });
 
   final Pokemon pokemon;
@@ -40,7 +43,7 @@ class PokemonListCard extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Flexible(
-              flex: 2,
+              flex: 3,
               child: Padding(
                 padding: const EdgeInsets.symmetric(
                   vertical: AppPadding.p12,
@@ -61,8 +64,8 @@ class PokemonListCard extends StatelessWidget {
                       style: context.textTheme.labelLarge,
                     ),
                     const SizedBox(height: AppSize.s4),
-                    Row(
-                      mainAxisSize: MainAxisSize.min,
+                    Wrap(
+                      runSpacing: AppSize.s4,
                       children: [
                         for (var type in pokemon.types)
                           PokemonTypeLabel(type: type),
@@ -73,7 +76,8 @@ class PokemonListCard extends StatelessWidget {
               ),
             ),
             Flexible(
-              flex: 1,
+              flex: 2,
+              fit: FlexFit.tight,
               child: Stack(
                 children: [
                   Container(
@@ -100,14 +104,22 @@ class PokemonListCard extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Positioned(
-                    top: 0,
-                    right: 0,
-                    child: IconButton(
-                      onPressed: () {},
-                      icon: SvgPicture.asset(ImageAssets.favOutlined_2),
-                    ),
-                  )
+                  if (toggleFavorite != null)
+                    Positioned(
+                      top: 0,
+                      right: 0,
+                      child: IconButton(
+                        onPressed: () {
+                          var id = pokemon.pokemonId.getOrCrash();
+                          toggleFavorite!(id);
+                        },
+                        icon: SvgPicture.asset(
+                          pokemon.isFavorite
+                              ? ImageAssets.fav_2
+                              : ImageAssets.favOutlined_2,
+                        ),
+                      ),
+                    )
                 ],
               ),
             ),

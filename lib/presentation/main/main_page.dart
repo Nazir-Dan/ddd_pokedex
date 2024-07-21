@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:ddd_pokedex/app/auth/auth_bloc_bloc.dart';
+import 'package:ddd_pokedex/app/favorite/favorite_bloc.dart';
 import 'package:ddd_pokedex/app/pokedex/poke_main_bloc.dart';
 import 'package:ddd_pokedex/injection.dart';
 import 'package:ddd_pokedex/presentation/core/dialogs/loading_screen.dart';
@@ -51,20 +52,6 @@ class MainPage extends HookWidget {
           );
         },
         child: Scaffold(
-          // appBar: AppBar(
-          //   title: Text(
-          //     AppStrings.pokedex,
-          //     style: context.textTheme.titleLarge,
-          //   ),
-          //   actions: [
-          //     IconButton(
-          //       icon: const Icon(Icons.exit_to_app),
-          //       onPressed: () {
-          //         context.read<AuthBloc>().add(const AuthEvent.signedOut());
-          //       },
-          //     ),
-          //   ],
-          // ),
           body: SafeArea(
             child: ValueListenableBuilder(
                 valueListenable: currentPage,
@@ -86,6 +73,13 @@ class MainPage extends HookWidget {
                   ),
                   child: BottomNavigationBar(
                     onTap: (value) {
+                      if (value == 2 && currentPage.value != value) {
+                        context.read<FavoriteBloc>().add(
+                          FavoriteEvent.loadFavs(() {
+                            LoadingScreen.instance().hide();
+                          }),
+                        );
+                      }
                       currentPage.value = value;
                     },
                     currentIndex: currentPage.value,
