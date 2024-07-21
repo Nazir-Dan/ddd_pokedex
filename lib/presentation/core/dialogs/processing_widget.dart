@@ -19,7 +19,7 @@ class ProcessingWidget extends StatelessWidget {
         Row(
           children: [
             Text(
-              'Processing...',
+              'Processing . . . ',
               style: context.textTheme.labelLarge,
             ),
             Text(
