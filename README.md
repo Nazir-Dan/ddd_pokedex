@@ -1,6 +1,6 @@
 # ddd_pokedex
 
-a fully functional pokedex mobile aplication using flutter
+a fully functional pokedex mobile aplication using flutter and firebase
 
 # features
 
