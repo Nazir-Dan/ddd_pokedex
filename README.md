@@ -1,6 +1,7 @@
 # ddd_pokedex
 
-a fully functional pokedex mobile aplication using flutter and firebase
+- a fully functional pokedex mobile aplication using Flutter, Firebase and, Pokeapi (api for all pokemon related data)
+- design inspired from https://www.figma.com/design/F3XebLb5OllI10IZ4O6Qcf/Pok%C3%A9dex-%2F-Pok%C3%A9mon-App-(Community)?node-id=1268-35268&m=dev
 
 # features
 
