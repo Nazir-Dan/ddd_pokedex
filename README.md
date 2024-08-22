@@ -18,4 +18,5 @@
 - settings/profile page
 
 # preview
-<img src="assets/preview/Untitled Project.gif" width = 300>
+
+https://github.com/user-attachments/assets/7c517650-c578-4b4e-a738-0143569162ae
